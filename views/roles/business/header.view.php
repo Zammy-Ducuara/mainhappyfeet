@@ -9,5 +9,10 @@
 </head>
 <body>
     <div class="container">
-        <nav>Navegador</nav>
+        <nav>
+            <ul>
+                <li><a href="?c=Landing">Home</a></li>
+                <li><a href="?c=Login">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
         <main>

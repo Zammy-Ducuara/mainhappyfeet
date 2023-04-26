@@ -1,5 +1,5 @@
             <section>
-                <form action="?c=Login" method="post">
+                <form action="?c=Login&a=login" method="post">
                     <div class="form-header">
                         <h2>Iniciar Sesión</h2>
                     </div>

@@ -1,6 +1,7 @@
 <?php
     class Credential{
         // Atributos (Encapsulamiento)
+        # Datos del MR y DC
         private $codigoUser;
         private $passUser;
         // Constructor (Sobrecarga de Constructores)

@@ -12,7 +12,7 @@
         <nav>
             <ul>
                 <li><a href="?">Inicio</a></li>
-                <li><a href="?c=Login">Iniciar Sesión</a></li>
+                <li><a href="?c=Login&a=login">Iniciar Sesión</a></li>
             </ul>
         </nav>
         <main>

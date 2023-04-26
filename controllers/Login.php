@@ -1,8 +1,13 @@
 <?php
     require_once "models/model_dto/Credential.php";
+    require_once "models/model_dao/CredentialDao.php";     
     class Login{
-        public function __construct(){}
-        public function main(){
+        private $credentialDao;
+        public function __construct(){
+            $this->credentialDao = new CredentialDao;
+        }
+        // RF01_CU01 - Iniciar Sesión
+        public function login(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 require_once "views/roles/business/header.view.php";
                 require_once "views/business/login.view.php";
@@ -10,11 +15,12 @@
             }
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Captura de datos                
-                $userDto = new Credential(
+                $credentialDto = new Credential(
                     $_POST['user'], 
                     $_POST['pass']
                 );
-                if ($userDto->getCodigoUser() == 'admin' && $userDto->getPassUser() == '12345') {
+                $prueba = $this->credentialDao->loginDao($credentialDto);
+                if ($prueba) {                    
                     header('Location: ?c=Dashboard');                    
                 } else {
                     require_once "views/roles/business/header.view.php";
@@ -24,5 +30,7 @@
                 }
             }
         }
+        // RF02_CU02 - Recuperar Contraseña
+        public function forgotPass(){}
     }
 ?>

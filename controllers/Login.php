@@ -1,6 +1,6 @@
 <?php
     require_once "models/model_dto/Credential.php";
-    require_once "models/model_dao/CredentialDao.php";     
+    require_once "models/model_dao/CredentialDao.php";
     class Login{
         private $credentialDao;
         public function __construct(){
@@ -18,8 +18,8 @@
                 $credentialDto = new Credential(
                     $_POST['user'], 
                     $_POST['pass']
-                );
-                $prueba = $this->credentialDao->loginDao($credentialDto);
+                );                
+                // $prueba = $this->credentialDao->loginDao($credentialDto);
                 if ($prueba) {                    
                     header('Location: ?c=Dashboard');                    
                 } else {

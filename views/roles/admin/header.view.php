@@ -10,9 +10,21 @@
 <body>
     <div class="container">
         <nav>
-            <ul>
-                <li><a href="?c=Dashboard">Inicio</a></li>
-                <li><a href="?c=Logout">Cerrar Sesión</a></li>
-            </ul>
+            <div class="borde logo">Logo</div>
+            <div class="borde navega">
+                <a href="">Inicio</a>
+            </div>
+            <div class="borde ingreso">
+                <a href="?c=Logout">Cerrar Sesión</a>
+            </div>
         </nav>
         <main>
+            <aside class="borde">
+                <h3>Módulo Usuarios</h3>
+                <ul>
+                    <li><a href="?c=Users&a=createRol">Crear Rol</a></li>
+                    <li><a href="">Consultar Roles</a></li>
+                    <li><a href="">Crear Usuario</a></li>
+                    <li><a href="">Consultar Usuario</a></li>
+                </ul>
+            </aside>

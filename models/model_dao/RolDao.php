@@ -26,5 +26,24 @@
 				die($e->getMessage());	
 			}
         }
+		public function rolReadDao(){
+			try {
+				$userList = [];
+				$sql = 'SELECT * FROM ROLES';
+				$stmt = $this->dbh->query($sql);
+				foreach ($stmt->fetchAll() as $rol) {
+					$userList[] = new Rol(
+						$rol['codigo_rol'],						
+						$rol['nombre_rol']
+					);					
+				}
+				return $userList;
+			} catch (Exception $e) {
+				die($e->getMessage());
+			}
+		}
+		public function getById(){}
+		public function rolUpdateDao(){}
+		public function rolDeleteDao(){}
     }
 ?>

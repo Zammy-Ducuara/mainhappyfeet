@@ -18,7 +18,16 @@
                     $_POST['rolNombre']
                 );                
                 $this->rolDao->rolCreateDao($rolDto);
+                header("Location: ?c=Users&a=readRol");
             }
         }
+        public function readRol(){
+            $roles = $this->rolDao->rolReadDao();            
+            require_once "views/roles/admin/header.view.php";
+            require_once "views/modules/1_users/rol_read.view.php";
+            require_once "views/roles/admin/footer.view.php";
+        }
+        public function updateRol(){}
+        public function deleteRol(){}
     }
 ?>

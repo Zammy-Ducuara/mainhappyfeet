@@ -14,8 +14,8 @@
                             <td><?php echo $rol->getRolCodigo(); ?></td>
                             <td><?php echo $rol->getRolNombre(); ?></td>
                             <td>
-                                <a href="">Actualizar</a>
-                                <a href="">Eliminar</a>
+                                <a href="?c=Users&a=updateRol&rolCodigo=<?php echo $rol->getRolCodigo()?>">Actualizar</a>
+                                <a href="?c=Users&a=deleteRol&rolCodigo=<?php echo $rol->getRolCodigo()?>">Eliminar</a>
                             </td>
                         </tr>
                         <?php endforeach; ?>

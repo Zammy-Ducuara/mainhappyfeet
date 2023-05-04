@@ -42,8 +42,45 @@
 				die($e->getMessage());
 			}
 		}
-		public function getById(){}
-		public function rolUpdateDao(){}
-		public function rolDeleteDao(){}
+		public function getById($rolCodigo){
+			try {				
+				$sql = "SELECT * FROM ROLES WHERE codigo_rol=:codigoRol";				
+				$stmt = $this->dbh->prepare($sql);
+				$stmt->bindValue('codigoRol', $rolCodigo);
+				$stmt->execute();
+				$userDb = $stmt->fetch();
+				$userDto = new Rol(
+					$userDb['codigo_rol'],
+					$userDb['nombre_rol']					
+				);
+				return $userDto;
+			} catch (Exception $e) {
+				die($e->getMessage());
+			}
+		}
+		public function rolUpdateDao($rolDto){
+			try {				
+				$sql = 'UPDATE ROLES SET
+							codigo_rol = :codigoRol,
+							nombre_rol = :nombreRol
+						WHERE codigo_rol = :codigoRol';				
+				$stmt = $this->dbh->prepare($sql);				
+				$stmt->bindValue('codigoRol', $rolDto->getRolCodigo());			
+				$stmt->bindValue('nombreRol', $rolDto->getRolNombre());
+				$stmt->execute();
+			} catch (Exception $e) {
+				die($e->getMessage());				
+			}
+		}
+		public function rolDeleteDao($rolCodigo){
+			try {
+				$sql = 'DELETE FROM ROLES WHERE codigo_rol = :codigoRol';
+				$stmt = $this->dbh->prepare($sql);
+				$stmt->bindValue('codigoRol', $rolCodigo);
+				$stmt->execute();
+			} catch (Exception $e) {
+				die($e->getMessage());
+			}
+		}
     }
 ?>

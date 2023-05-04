@@ -27,7 +27,25 @@
             require_once "views/modules/1_users/rol_read.view.php";
             require_once "views/roles/admin/footer.view.php";
         }
-        public function updateRol(){}
-        public function deleteRol(){}
+        public function updateRol(){
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $rolDto = $this->rolDao->getById($_GET['rolCodigo']);                
+                require_once "views/roles/admin/header.view.php";
+                require_once "views/modules/1_users/rol_update.view.php";
+                require_once "views/roles/admin/footer.view.php";
+            }
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $rolDto = new Rol(
+                    $_POST['rolCodigo'],
+                    $_POST['rolNombre']
+                );
+                $this->rolDao->rolUpdateDao($rolDto);
+                header('Location: ?c=Users&a=readRol');
+            }
+        }
+        public function deleteRol(){
+            $this->rolDao->rolDeleteDao($_GET['rolCodigo']);
+            header('Location: ?c=Users&a=readRol');
+        }
     }
 ?>

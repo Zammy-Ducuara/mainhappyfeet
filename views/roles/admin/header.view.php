@@ -24,7 +24,7 @@
                 <ul>
                     <li><a href="?c=Users&a=createRol">Crear Rol</a></li>
                     <li><a href="?c=Users&a=readRol">Consultar Roles</a></li>
-                    <li><a href="">Crear Usuario</a></li>
+                    <li><a href="?c=Users&a=createUser">Crear Usuario</a></li>
                     <li><a href="">Consultar Usuario</a></li>
                 </ul>
             </aside>

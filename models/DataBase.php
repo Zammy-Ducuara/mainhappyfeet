@@ -2,7 +2,7 @@
     class DataBase{
         public static function connection(){
             $servername = "localhost";
-            $database = "bbdd_inventario";
+            $database = "sisweb_bbdd01";
             $username = "root";
             $password = "";
 			$pdo = new PDO("mysql:host=$servername;dbname=$database;charset=utf8",$username,$password);

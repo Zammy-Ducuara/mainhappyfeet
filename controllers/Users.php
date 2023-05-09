@@ -20,7 +20,8 @@
                 $rolDto = new Rol(
                     $_POST['rolCodigo'],
                     $_POST['rolNombre']
-                );                
+                );
+                print_r($rolDto);               
                 $this->rolDao->rolCreateDao($rolDto);
                 header("Location: ?c=Users&a=readRol");
             }
@@ -67,8 +68,14 @@
                 );
                 print_r($userDto);
                 $this->userDao->userCreateDao($userDto);
-                // header("Location: ?c=Users&a=readRol");
+                header("Location: ?c=Users&a=readUser");
             }
+        }
+        public function readUser(){
+            $users = $this->userDao->userReadDao();            
+            require_once "views/roles/admin/header.view.php";            
+            require_once "views/modules/1_users/user_read.view.php";
+            require_once "views/roles/admin/footer.view.php";
         }
     }
 ?>

@@ -7,11 +7,11 @@
                     <div class="form-body">
                         <div class="form-control">
                             <label for="">Código Rol</label>
-                            <input type="number" name="rolCodigo">
+                            <input type="number" name="rolCode">
                         </div>
                         <div class="form-control">
                             <label for="">Nombre Rol</label>
-                            <input type="text" name="rolNombre">
+                            <input type="text" name="rolName">
                         </div>
                     </div>
                     <div class="form-footer">

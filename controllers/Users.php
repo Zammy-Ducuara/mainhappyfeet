@@ -1,5 +1,4 @@
-<?php
-    require_once "models/model_dto/Rol.php";
+<?php    
     require_once "models/model_dao/RolDao.php";
     require_once "models/model_dto/User.php";
     require_once "models/model_dao/UserDao.php";
@@ -17,13 +16,13 @@
                 require_once "views/roles/admin/footer.view.php";
             }
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {                
-                $rolDto = new Rol(
-                    $_POST['rolCodigo'],
-                    $_POST['rolNombre']
+                $rol = new User(
+                    $_POST['rolCode'],
+                    $_POST['rolName']
                 );
-                print_r($rolDto);               
-                $this->rolDao->rolCreateDao($rolDto);
-                header("Location: ?c=Users&a=readRol");
+                print_r($rol);               
+                // $this->rolDao->rolCreateDao($rolDto);
+                // header("Location: ?c=Users&a=readRol");
             }
         }
         public function readRol(){

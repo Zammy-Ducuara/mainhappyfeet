@@ -1,5 +1,5 @@
 <?php
-    class Customer{
+    class Customer extends Credential{
         private $CustomerBirthDate;
         public function __construct(){
             $a = func_get_args();

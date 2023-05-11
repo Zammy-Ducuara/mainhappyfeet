@@ -13,6 +13,10 @@
 				call_user_func_array(array($this, $f), $a);
 			}
         }
+        public function __construct2($rolCode,$rolName){
+            $this->rolCode = $rolCode;
+            $this->rolName = $rolName;
+        }
         public function __construct6($rolCode,$rolName,$userCode,$userNames,$userLastNames,$userEmail){
             $this->rolCode = $rolCode;
             $this->rolName = $rolName;

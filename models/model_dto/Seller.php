@@ -1,5 +1,5 @@
 <?php
-    class Seller{
+    class Seller extends Credential{
         private $sellerSalary;
         public function __construct(){
             $a = func_get_args();

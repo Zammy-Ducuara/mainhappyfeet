@@ -1,10 +1,11 @@
 <?php
     class User{
-        private $rolCode;
-        private $userCode;
-        private $userNames;
-        private $userLastNames;
-        private $userEmail;
+        protected $rolCode;
+        protected $rolName;
+        protected $userCode;
+        protected $userNames;
+        protected $userLastNames;
+        protected $userEmail;
         public function __construct(){
             $a = func_get_args();
 			$i = func_num_args();
@@ -12,8 +13,9 @@
 				call_user_func_array(array($this, $f), $a);
 			}
         }
-        public function __construct5($rolCode,$userCode,$userNames,$userLastNames,$userEmail){
+        public function __construct6($rolCode,$rolName,$userCode,$userNames,$userLastNames,$userEmail){
             $this->rolCode = $rolCode;
+            $this->rolName = $rolName;
             $this->userCode = $userCode;
             $this->userNames = $userNames;
             $this->userLastNames = $userLastNames;
@@ -24,6 +26,12 @@
         }
         public function getRolCode(){
             return $this->rolCode;
+        }        
+        public function setRolName($rolName){
+            $this->rolName;
+        }
+        public function getRolName(){
+            return $this->rolName;
         }        
         public function setUserCode($userCode){
             $this->userCode;

@@ -1,3 +1,3 @@
 <?php
-    require_once "controllers/Landing.php";
+    require_once "controllers/Dashboard.php";
 ?>

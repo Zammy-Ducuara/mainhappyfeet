@@ -71,14 +71,41 @@ nav a{
 aside{
     flex: 20%;
     padding: 5px;
+    flex-flow: column nowrap;
+    background: #444;
 }
 aside .modulo{
     flex: 1;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 5px;
+    background: #fff;
+}
+aside .modulo a{ 
+    background: #fff;
 }
 section{
-    flex: 80%;    
+    flex: 80%;
+    flex-flow: column nowrap;
     padding: 5px;
+    background: #444;
+}
+section .migas{
+    height: 40px;
+    padding: 5px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;    
+    background: #fff;
+}
+section .principal{
+    flex: 1;
+    padding: 5px;
+    background: #fff;
 }
 footer{    
+    justify-content: center;
     padding: 5px;
+    background: #444;
+    color: #fff;
 }

@@ -22,7 +22,7 @@
                     <a href="">Inicio</a>
                 </div>
                 <div class="navega">
-                    <!-- <a href="">Notificaciones</a> -->
+                    <!-- <a href=""></a> -->
                 </div>
             </div>
             <div class="borde ingreso">

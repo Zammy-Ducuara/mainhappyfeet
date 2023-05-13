@@ -9,6 +9,8 @@
     border: 1px solid #ccc;
 }
 .container{
+    max-width: 1280px;
+    margin: auto;
     height: 100vh;
     display: flex;
     flex-flow: column nowrap;
@@ -17,7 +19,10 @@ nav, main, aside, section, footer, div{
     display: flex;
     flex-flow: row nowrap;    
 }
-nav{    
+nav{
+    position: sticky;
+    /* max-width: 1280px;
+    margin: auto; */
     height: 50px;
 }
 nav a{
@@ -60,7 +65,7 @@ nav a{
 }
 .ingreso{
     flex: 15%;    
-    background: #333;
+    background: #222;
 }
 .ingreso a{
     color: #fff;
@@ -68,17 +73,20 @@ nav a{
 .ingreso a:hover{
     background: #000;
 }
+main{
+    height: 92vh;
+}
 aside{
     flex: 20%;
     padding: 5px;
     flex-flow: column nowrap;
+    justify-content: flex-start;
     background: #444;
 }
-aside .modulo{
-    flex: 1;
+aside .modulo{    
     display: flex;
     flex-flow: column nowrap;
-    padding: 5px;
+    padding: 10px;
     background: #fff;
 }
 aside .modulo a{ 
@@ -103,9 +111,13 @@ section .principal{
     padding: 5px;
     background: #fff;
 }
-footer{    
+footer{ 
+    height: 8vh;
+    flex-flow: column nowrap;
     justify-content: center;
+    align-items: center;
     padding: 5px;
-    background: #444;
+    background: #222;
     color: #fff;
+    font-size: 0.8em;
 }

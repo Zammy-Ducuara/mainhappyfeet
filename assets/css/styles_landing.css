@@ -14,6 +14,7 @@
     margin: auto;    
     display: flex;
     flex-flow: column nowrap;
+    background: #666;
 }
 nav, main, section, footer, div{    
     display: flex;
@@ -77,12 +78,14 @@ nav a{
     background: #000;
 }
 main{    
-    padding: 55px 5px 5px 5px;
-    flex-flow: column nowrap;
+    padding: 55px 5px 0 5px;
+    flex-flow: column nowrap;    
 }
 section{    
     height: 92vh;    
     padding: 5px;
+    background: #fff;
+    margin-bottom: 5px;
 }
 footer{    
     height: 8vh;

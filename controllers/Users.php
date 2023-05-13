@@ -4,7 +4,7 @@
         # CU08 - Crear Usuario
         public function createUser(){
             require_once "views/roles/admin/header.view.php";
-            require_once "views/modules/01_users/createUser.view.php";
+            require_once "views/modules/01_users/create_user.view.php";
             require_once "views/roles/admin/footer.view.php";
         }
         # CU09 - Crear Administrador
@@ -22,12 +22,14 @@
         # CU12 - Consultar Usuarios
         public function readUser(){
             require_once "views/roles/admin/header.view.php";
-            require_once "views/modules/01_users/readUser.view.php";
+            require_once "views/modules/01_users/read_user.view.php";
             require_once "views/roles/admin/footer.view.php";
         }
         # CU13 - Actualizar Usuario
         public function updateUser(){
-            echo "Controlador para actualizar usuarios";
+            require_once "views/roles/admin/header.view.php";
+            require_once "views/modules/01_users/update_user.view.php";
+            require_once "views/roles/admin/footer.view.php";
         }
         # CU14 - Eliminar Usuario
         public function deleteUser(){

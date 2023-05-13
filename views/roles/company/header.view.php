@@ -21,11 +21,11 @@
                 </div>
                 <div class="navega">                    
                     <a href="">Contáctanos</a>
-                    <a href="?c=Users&a=register">Registrate</a>
+                    <a href="">Registrate</a>
                 </div>
             </div>
             <div class="borde ingreso">
-                <a href="">Ingreso</a>
+                <a href="?c=Login&a=login">Ingreso</a>
             </div>
         </nav>
         <main class="borde">

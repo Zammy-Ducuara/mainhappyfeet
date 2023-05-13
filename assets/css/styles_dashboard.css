@@ -20,9 +20,7 @@ nav, main, aside, section, footer, div{
     flex-flow: row nowrap;    
 }
 nav{
-    position: sticky;
-    /* max-width: 1280px;
-    margin: auto; */
+    position: sticky;    
     height: 50px;
 }
 nav a{

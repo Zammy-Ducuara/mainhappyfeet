@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <nav>
+        <nav class="borde">
             <div class="borde logo">
                 <a href="">
                     <img src="assets/img/logo_company.png" alt="">

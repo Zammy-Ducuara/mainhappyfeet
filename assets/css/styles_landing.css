@@ -9,7 +9,9 @@
     border: 1px solid #ccc;
 }
 .container{
-    height: 100vh;
+    width: 100%;
+    max-width: 1280px;
+    margin: auto;    
     display: flex;
     flex-flow: column nowrap;
 }
@@ -17,7 +19,11 @@ nav, main, section, footer, div{
     display: flex;
     flex-flow: row nowrap;    
 }
-nav{    
+nav{
+    position: fixed;
+    width: 100%;
+    max-width: 1280px;
+    margin: auto;
     height: 50px;
 }
 nav a{
@@ -33,6 +39,7 @@ nav a{
 .logo{
     flex: 20%;
     justify-content: center;
+    background: #fff;
 }
 .logo img{    
     height: 50px;
@@ -41,6 +48,7 @@ nav a{
 .navegacion{
     flex: 65%;    
     justify-content: flex-start;
+    background: #aaa;
 }
 .navegacion .inicio{
     flex: 1;
@@ -69,12 +77,20 @@ nav a{
     background: #000;
 }
 main{    
-    padding: 5px;
+    padding: 55px 5px 5px 5px;
+    flex-flow: column nowrap;
 }
-section{
-    flex: 1;
+section{    
+    height: 92vh;    
     padding: 5px;
 }
 footer{    
+    height: 8vh;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
     padding: 5px;
+    background: #222;
+    color: #fff;
+    font-size: 0.8em;
 }

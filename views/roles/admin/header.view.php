@@ -35,8 +35,8 @@
                     <h1>Usuarios</h1>
                     <a href="?c=Roles&a=createRol">Crear Rol</a>
                     <a href="?c=Roles&a=readRol">Consultar Roles</a>
-                    <a href="">Crear Usuario</a>
-                    <a href="">Consultar Usuarios</a>
+                    <a href="?c=Users&a=createUser">Crear Usuario</a>
+                    <a href="?c=Users&a=readUser">Consultar Usuarios</a>
                     <a href="">Crear Mensaje</a>
                     <a href="">Consultar Mensajes</a>
                 </div>
@@ -47,8 +47,8 @@
                 </div>
                 <div class="modulo">
                     <h1>Reportes</h1>
-                    <a href="">Impreso Usuarios</a>
-                    <a href="">Gráfico Usuairos</a>
+                    <a href="?c=Reports&a=printedUserReport">Impreso Usuarios</a>
+                    <a href="?c=Reports&a=graphicUserReport">Gráfico Usuairos</a>
                 </div>
             </aside>
             <section class="borde">

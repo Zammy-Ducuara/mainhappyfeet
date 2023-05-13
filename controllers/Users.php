@@ -3,7 +3,9 @@
         public function __construct(){}        
         # CU08 - Crear Usuario
         public function createUser(){
-            echo "Controlador para crear usuario";
+            require_once "views/roles/admin/header.view.php";
+            require_once "views/modules/01_users/createUser.view.php";
+            require_once "views/roles/admin/footer.view.php";
         }
         # CU09 - Crear Administrador
         public function createAdmin(){
@@ -19,7 +21,9 @@
         }
         # CU12 - Consultar Usuarios
         public function readUser(){
-            echo "Controlador para consultar usuarios";
+            require_once "views/roles/admin/header.view.php";
+            require_once "views/modules/01_users/readUser.view.php";
+            require_once "views/roles/admin/footer.view.php";
         }
         # CU13 - Actualizar Usuario
         public function updateUser(){
@@ -28,14 +32,6 @@
         # CU14 - Eliminar Usuario
         public function deleteUser(){
             echo "Controlador para eliminar usuarios";
-        }                        
-        # CU# - Generar reporte impreso de usuarios
-        public function printedUserReport(){
-            echo "Controlador para generar reporte impreso de usuarios";
-        }
-        # CU# - Generar reporte gráfico de usuarios
-        public function graphicUserReport(){
-            echo "Controlador para generar reporte gráfico de usuarios";
         }
     }
 ?>

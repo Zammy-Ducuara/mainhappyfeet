@@ -17,7 +17,7 @@
             </div>
             <div class="borde navegacion">
                 <div class="inicio">
-                    <a href="">Inicio</a>
+                    <a href="?">Inicio</a>
                 </div>
                 <div class="navega">                    
                     <a href="">Contáctanos</a>
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="borde ingreso">
-                <a href="?c=Login&a=login">Ingreso</a>
+                <a href="?c=Login">Ingreso</a>
             </div>
         </nav>
         <main class="borde">

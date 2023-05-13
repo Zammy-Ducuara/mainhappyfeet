@@ -8,10 +8,13 @@
 .borde{
     border: 1px solid #ccc;
 }
+body{
+    overflow: hidden;
+}
 .container{
-    max-width: 1280px;
-    margin: auto;
     height: 100vh;
+    max-width: 1280px;
+    margin: auto; 
     display: flex;
     flex-flow: column nowrap;
 }
@@ -20,7 +23,10 @@ nav, main, aside, section, footer, div{
     flex-flow: row nowrap;    
 }
 nav{
-    position: sticky;    
+    position: fixed;
+    width: 100%;
+    max-width: 1280px;
+    margin: auto;     
     height: 50px;
 }
 nav a{
@@ -37,13 +43,17 @@ nav a{
     flex: 20%;
     justify-content: center;
 }
+.logo a{
+    background: #fff;
+}
 .logo img{    
     height: 50px;
-    padding: 5px;
+    padding: 5px;    
 }
 .navegacion{
     flex: 65%;    
     justify-content: flex-start;
+    background: #fff;
 }
 .navegacion .inicio{
     flex: 1;
@@ -72,9 +82,11 @@ nav a{
     background: #000;
 }
 main{
+    padding-top: 50px;
     height: 92vh;
 }
 aside{
+    height: 100%;
     flex: 20%;
     padding: 5px;
     flex-flow: column nowrap;
@@ -104,8 +116,9 @@ section .migas{
     align-items: center;    
     background: #fff;
 }
-section .principal{
-    flex: 1;
+section .principal{    
+    overflow-y: scroll;
+    height: 100%;
     padding: 5px;
     background: #fff;
 }

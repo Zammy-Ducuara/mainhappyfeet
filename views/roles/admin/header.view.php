@@ -37,6 +37,8 @@
                     <a href="">Consultar Roles</a>
                     <a href="">Crear Usuario</a>
                     <a href="">Consultar Usuarios</a>
+                    <a href="">Crear Mensaje</a>
+                    <a href="">Consultar Mensajes</a>
                 </div>
                 <div class="modulo">
                     <h1>Módulo Principal</h1>

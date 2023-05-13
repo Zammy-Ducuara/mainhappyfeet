@@ -1,7 +1,7 @@
 <?php
     class Register{
         public function __construct(){}
-        # CU15 - Registrarse
+        # CU08 - Registrarse
         public function main(){
             require_once "views/company/header.view.php";
             echo "Controlador para registrarse";            

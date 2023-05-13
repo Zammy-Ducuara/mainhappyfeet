@@ -32,6 +32,10 @@
         <main>
             <aside class="borde">
                 <div class="modulo">
+                    <h1>Perfil</h1>
+                    <a href="?c=Users&a=editProfile">Editar Perfil</a>
+                </div>
+                <div class="modulo">
                     <h1>Usuarios</h1>
                     <a href="?c=Roles&a=createRol">Crear Rol</a>
                     <a href="?c=Roles&a=readRol">Consultar Roles</a>

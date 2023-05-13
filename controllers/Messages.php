@@ -1,13 +1,13 @@
 <?php
     class Messages{
         public function __construct(){}
-        # CU016 - Crear Mensaje Usuario
+        # CU017 - Crear Mensaje Usuario
         public function main(){            
             require_once "views/company/header.view.php";
             echo "Controlador para que el usuario envíe mensajes";
             require_once "views/company/footer.view.php";
         }
-        # CU016 - Crear Mensaje Roles
+        # CU018 - Crear Mensaje Perfil
         public function createMessage(){
             require_once "views/roles/admin/header.view.php";
             require_once "views/modules/01_users/create_message.view.php";

@@ -19,22 +19,22 @@
             </div>
             <div class="borde navegacion">
                 <div class="inicio">
-                    <a href="">Inicio</a>
+                    <a href="?c=Dashboard">Inicio</a>
                 </div>
                 <div class="navega">
                     <!-- <a href=""></a> -->
                 </div>
             </div>
             <div class="borde ingreso">
-                <a href="">Cerrar Sesión</a>
+                <a href="?c=Logout">Cerrar Sesión</a>
             </div>
         </nav>
         <main>
             <aside class="borde">
                 <div class="modulo">
                     <h1>Usuarios</h1>
-                    <a href="">Crear Rol</a>
-                    <a href="">Consultar Roles</a>
+                    <a href="?c=Roles&a=createRol">Crear Rol</a>
+                    <a href="?c=Roles&a=readRol">Consultar Roles</a>
                     <a href="">Crear Usuario</a>
                     <a href="">Consultar Usuarios</a>
                     <a href="">Crear Mensaje</a>
@@ -51,3 +51,5 @@
                     <a href="">Gráfico Usuairos</a>
                 </div>
             </aside>
+            <section class="borde">
+                <div class="borde migas">Inicio / ...</div>

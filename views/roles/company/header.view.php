@@ -20,8 +20,8 @@
                     <a href="?">Inicio</a>
                 </div>
                 <div class="navega">                    
-                    <a href="">Contáctanos</a>
-                    <a href="">Registrate</a>
+                    <a href="?c=Messages">Contáctanos</a>
+                    <a href="?c=Register">Registrate</a>
                 </div>
             </div>
             <div class="borde ingreso">

@@ -4,7 +4,7 @@
         # CU01 - Iniciar Sesión
         public function main(){
             require_once "views/roles/company/header.view.php";
-            echo "Controlador para iniciar sesión";            
+            header("Location:?c=Dashboard");            
             require_once "views/roles/company/footer.view.php";
         }
         # CU02 - Recuperar Contraseña

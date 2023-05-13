@@ -21,7 +21,7 @@
                 </div>
                 <div class="navega">                    
                     <a href="">Contáctanos</a>
-                    <a href="">Registrate</a>
+                    <a href="?c=Users&a=register">Registrate</a>
                 </div>
             </div>
             <div class="borde ingreso">

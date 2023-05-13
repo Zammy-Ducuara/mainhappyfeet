@@ -13,8 +13,7 @@
     max-width: 1280px;
     margin: auto;    
     display: flex;
-    flex-flow: column nowrap;
-    background: #666;
+    flex-flow: column nowrap;    
 }
 nav, main, section, footer, div{    
     display: flex;
@@ -78,8 +77,9 @@ nav a{
     background: #000;
 }
 main{    
+    flex-flow: column nowrap;
     padding: 55px 5px 0 5px;
-    flex-flow: column nowrap;    
+    background: #eee;    
 }
 section{    
     height: 92vh;    

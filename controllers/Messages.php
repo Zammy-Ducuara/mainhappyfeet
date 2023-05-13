@@ -3,9 +3,9 @@
         public function __construct(){}
         # CU016 - Crear Mensaje Usuario
         public function main(){            
-            require_once "views/roles/company/header.view.php";
+            require_once "views/company/header.view.php";
             echo "Controlador para que el usuario envíe mensajes";
-            require_once "views/roles/company/footer.view.php";
+            require_once "views/company/footer.view.php";
         }
         # CU016 - Crear Mensaje Roles
         public function createMessage(){

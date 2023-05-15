@@ -9,15 +9,21 @@
         }
         # CU10 - Crear Administrador
         public function createAdmin(){
-            echo "Controlador para crear administrador";
+            require_once "views/roles/admin/header.view.php";
+            require_once "views/modules/01_users/create_admin.view.php";
+            require_once "views/roles/admin/footer.view.php";
         }
         # CU011 - Crear Cliente
         public function createCustomer(){
-            echo "Controlador para crear cliente";
+            require_once "views/roles/admin/header.view.php";
+            require_once "views/modules/01_users/create_customer.view.php";
+            require_once "views/roles/admin/footer.view.php";
         }
         # CU012 - Crear Vendedor
         public function createSeller(){
-            echo "Controlador para crear vendedor";
+            require_once "views/roles/admin/header.view.php";
+            require_once "views/modules/01_users/create_seller.view.php";
+            require_once "views/roles/admin/footer.view.php";
         }
         # CU13 - Consultar Usuarios
         public function readUser(){

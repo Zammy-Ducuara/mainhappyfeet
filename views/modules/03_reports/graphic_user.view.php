@@ -1,2 +1,1 @@
-                <div class="borde principal">Reporte Gráfico de Usuarios</div>
-            </section>
+Reporte Gráfico de Usuarios

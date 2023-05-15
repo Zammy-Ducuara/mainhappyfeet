@@ -4,7 +4,7 @@
         # CU017 - Crear Mensaje Usuario
         public function main(){            
             require_once "views/company/header.view.php";
-            echo "Controlador para que el usuario envíe mensajes";
+            require_once "views/company/contact.view.php";            
             require_once "views/company/footer.view.php";
         }
         # CU018 - Crear Mensaje Perfil

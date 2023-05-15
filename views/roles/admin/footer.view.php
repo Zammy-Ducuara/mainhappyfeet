@@ -1,3 +1,5 @@
+                </div>
+            </section>
         </main>
         <footer class="borde">
             <p>© Todos los derechos reservados a: Albeiro Ramos</p>

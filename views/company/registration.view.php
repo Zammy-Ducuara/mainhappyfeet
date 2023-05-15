@@ -1,7 +1,7 @@
 <section class="borde formulario">
     <form action="" method="" class="borde">
         <div class="borde form-header">
-            <h2>Contáctanos</h2>
+            <h2>Regístrate</h2>
         </div>
         <div class="borde form-body">
             <div class="form-control">
@@ -17,12 +17,12 @@
                 <input type="text" placeholder="Email">
             </div>
             <div class="form-control">
-                <label for="">Asunto</label>
-                <input type="text" placeholder="Asunto">
+                <label for="">Contraseña</label>
+                <input type="text" placeholder="Contraseña">
             </div>
             <div class="form-control">
-                <label for="" class="label-textarea">Mensaje</label>                
-                <textarea></textarea>
+                <label for="">Confirmación</label>
+                <input type="text" placeholder="Contraseña">
             </div>
         </div>
         <div class="borde form-footer">

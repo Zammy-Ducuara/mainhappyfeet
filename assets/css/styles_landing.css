@@ -91,10 +91,12 @@ section{
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
-    align-items: center;
     background: #fff;
     margin-bottom: 5px;
     padding: 5px;
+}
+section.formulario{
+    align-items: center;
 }
 footer{
     flex-flow: column nowrap;

@@ -14,8 +14,8 @@
             </div>
         </div>
         <div class="borde form-footer">
-            <a href="?c=Login&a=forgotLogin">¿Olvidó su contraseña?</a>
-            <input type="reset" value="Cancelar" class="borde">
+            <a href="?c=Login&a=forgotLogin" class="olvido">¿Olvidó su contraseña?</a>
+            <a href="?" class="borde">Cancelar</a>
             <input type="submit" value="Enviar" class="borde">
         </div>
     </form>

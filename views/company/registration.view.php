@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="borde form-footer">
-            <input type="reset" value="Cancelar" class="borde">
+            <a href="?" class="borde">Cancelar</a>
             <input type="submit" value="Enviar" class="borde">
         </div>
     </form>

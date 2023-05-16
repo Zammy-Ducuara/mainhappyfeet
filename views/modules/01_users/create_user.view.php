@@ -2,7 +2,7 @@
     <a href="?c=Users&a=createCustomer" class="borde">Crear Cliente</a>
     <a href="?c=Users&a=createSeller" class="borde">Crear Vendedor</a>
     <a href="?c=Users&a=createAdmin" class="borde">Crear Admin</a>
-    <a href="" class="borde">Consultar Usuarios</a>
+    <a href="?c=Users&a=readUser" class="borde">Consultar Usuarios</a>
 </div>
 <form action="" method="" class="borde">
     <div class="borde form-header">

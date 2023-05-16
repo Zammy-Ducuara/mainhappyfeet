@@ -2,7 +2,7 @@
     class DataBase{
         public static function connection(){
             $servername = "localhost";
-            $database = "";
+            $database = "dbappwebinv";
             $username = "root";
             $password = "";
 			$pdo = new PDO("mysql:host=$servername;dbname=$database;charset=utf8",$username,$password);

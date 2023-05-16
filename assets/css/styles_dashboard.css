@@ -268,8 +268,13 @@ form {
 }
 table {  
   border-collapse: collapse;
-  width: 100%;  
+  width: 100%;
+  margin: 5px 0;  
 }
+table.roles {  
+  width: 60%;  
+  align-self: center;  
+}  
 th{
   background: #222;
   color: #fff;

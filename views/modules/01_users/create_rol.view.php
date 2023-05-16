@@ -16,7 +16,7 @@
         </div>        
     </div>
     <div class="borde form-footer">
-        <a href="?" class="borde">Cancelar</a>
-        <input type="submit" value="Crear" class="borde">
+        <a href="?c=Roles&a=readRol" class="borde">Cancelar</a>
+        <input type="submit" value="Enviar" class="borde">
     </div>
 </form>

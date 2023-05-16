@@ -2,18 +2,18 @@
     class Messages{
         public function __construct(){}
         # CU017 - Crear Mensaje Usuario
-        public function main(){            
+        public function main(){
             require_once "views/company/header.view.php";
             require_once "views/company/contact.view.php";            
             require_once "views/company/footer.view.php";
         }
-        # CU018 - Crear Mensaje Perfil
+        # CU018 - Crear Mensaje
         public function createMessage(){
             require_once "views/roles/admin/header.view.php";
             require_once "views/modules/01_users/create_message.view.php";
             require_once "views/roles/admin/footer.view.php";
         }
-        # CU19 - Consultar sus Mensajes
+        # CU19 - Consultar mis Mensajes
         public function readMessageProfile(){
             require_once "views/roles/admin/header.view.php";
             require_once "views/modules/01_users/read_message_profile.view.php";

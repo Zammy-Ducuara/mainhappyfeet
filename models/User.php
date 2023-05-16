@@ -65,7 +65,15 @@
         }        
         # CU04 - Crear Rol
         public function createRol(){}
+        # CU06 - Actualizar Rol
+        public function updateRol(){}
+        # CU05 - Consultar Roles
+        public function readRol(){}
+        # CU07 - Eliminar Rol
+        public function deleteRol(){}        
         # CU09 - Crear Usuario
-        public function createUser(){}        
+        public function createUser(){}
+        # CU16 - Eliminar Usuario
+        public function deleteUser(){}        
     }
 ?>

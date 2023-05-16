@@ -5,11 +5,7 @@
     <div class="borde form-header">
         <h2>Crear Mensaje</h2>
     </div>
-    <div class="borde form-body">
-        <div class="form-control">
-            <label for="">Código</label>
-            <input type="text" disabled>
-        </div>
+    <div class="borde form-body">        
         <div class="form-control">
             <label for="">Para</label>
             <input type="text" placeholder="Correos">

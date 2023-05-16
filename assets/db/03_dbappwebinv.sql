@@ -1,12 +1,12 @@
-# DROP DATABASE DBAPPWEBINV
+DROP DATABASE DBAPPWEBINV;
 -- -----------------------------------------------------
--- Schema dbappwebinv
+-- ESTRUCTURA DBAPPWEBINV
 -- -----------------------------------------------------
 CREATE DATABASE DBAPPWEBINV DEFAULT CHARACTER SET utf8 ;
 USE DBAPPWEBINV ;
 
 -- -----------------------------------------------------
--- Table ROLES
+-- TABLA ROLES
 -- -----------------------------------------------------
 CREATE TABLE ROLES (
   rol_code INT NOT NULL AUTO_INCREMENT,
@@ -14,9 +14,8 @@ CREATE TABLE ROLES (
   PRIMARY KEY (rol_code)
 ) ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
--- Table USERS
+-- TABLA USERS
 -- -----------------------------------------------------
 CREATE TABLE USERS (
   rol_code INT NOT NULL,
@@ -34,9 +33,8 @@ CREATE TABLE USERS (
     ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
--- Table CREDENTIALS
+-- TABLA CREDENTIALS
 -- -----------------------------------------------------
 CREATE TABLE CREDENTIALS (
   credential_code VARCHAR(10) NOT NULL,
@@ -57,9 +55,8 @@ CREATE TABLE CREDENTIALS (
     ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
--- Table MESSAGES
+-- TABLA MESSAGES
 -- -----------------------------------------------------
 CREATE TABLE MESSAGES (
   user_code VARCHAR(10) NOT NULL,
@@ -75,9 +72,8 @@ CREATE TABLE MESSAGES (
     ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
--- Table CATEGORIES
+-- TABLA CATEGORIES
 -- -----------------------------------------------------
 CREATE TABLE CATEGORIES (
   category_code INT NOT NULL AUTO_INCREMENT,
@@ -85,9 +81,8 @@ CREATE TABLE CATEGORIES (
   PRIMARY KEY (category_code)
 ) ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
--- Table PRODUCTS
+-- TABLA PRODUCTS
 -- -----------------------------------------------------
 CREATE TABLE PRODUCTS (
   category_code INT NOT NULL,
@@ -107,9 +102,8 @@ CREATE TABLE PRODUCTS (
     ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
--- Table CUSTOMERS
+-- TABLA CUSTOMERS
 -- -----------------------------------------------------
 CREATE TABLE CUSTOMERS (
   customer_code VARCHAR(10) NOT NULL,
@@ -123,9 +117,8 @@ CREATE TABLE CUSTOMERS (
     ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
--- Table ORDERS
+-- TABLA ORDERS
 -- -----------------------------------------------------
 CREATE TABLE ORDERS (
   customer_code VARCHAR(10) NOT NULL,
@@ -146,9 +139,8 @@ CREATE TABLE ORDERS (
     ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
--- Table LIST_PRODUCTS_ORDERS
+-- TABLA LIST_PRODUCTS_ORDERS
 -- -----------------------------------------------------
 CREATE TABLE LIST_PRODUCTS_ORDERS (
   order_code VARCHAR(10) NOT NULL,
@@ -168,9 +160,8 @@ CREATE TABLE LIST_PRODUCTS_ORDERS (
     ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
--- Table EMPLOYEES
+-- TABLA EMPLOYEES
 -- -----------------------------------------------------
 CREATE TABLE EMPLOYEES (
   employee_code VARCHAR(10) NOT NULL,
@@ -184,9 +175,8 @@ CREATE TABLE EMPLOYEES (
     ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
--- Table SELLERS_ORDERS
+-- TABLA SELLERS_ORDERS
 -- -----------------------------------------------------
 CREATE TABLE SELLERS_ORDERS (
   seller_code VARCHAR(10) NOT NULL,
@@ -206,9 +196,8 @@ CREATE TABLE SELLERS_ORDERS (
     ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
--- Table BUYS
+-- TABLA BUYS
 -- -----------------------------------------------------
 CREATE TABLE BUYS (
   buy_code VARCHAR(10) NOT NULL,
@@ -220,9 +209,8 @@ CREATE TABLE BUYS (
   PRIMARY KEY (buy_code)
 ) ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
--- Table LIST_PRODUCTS_BUYS
+-- TABLA LIST_PRODUCTS_BUYS
 -- -----------------------------------------------------
 CREATE TABLE LIST_PRODUCTS_BUYS (
   buy_code VARCHAR(10) NOT NULL,

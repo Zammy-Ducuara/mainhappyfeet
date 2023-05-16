@@ -34,6 +34,7 @@
                 <div class="modulo">
                     <h1>Perfil</h1>
                     <a href="?c=Users&a=editProfile">Editar Perfil</a>
+                    <a href="?c=Messages&a=readMessageProfile">Mis Mensajes</a>
                 </div>
                 <div class="modulo">
                     <h1>Usuarios</h1>

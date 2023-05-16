@@ -50,11 +50,11 @@
             return $this->userName;
         }
         # Apellidos de Usuario
-        public function setLastName($lastName){
-            $this->lastName = $lastName;
+        public function setUserLastName($userLastName){
+            $this->userLastName = $userLastName;
         }
-        public function getLastName(){
-            return $this->lastName;
+        public function getuserLastName(){
+            return $this->userLastName;
         }
         # Email de Usuario
         public function setUserEmail($userEmail){
@@ -62,10 +62,10 @@
         }
         public function getUserEmail(){
             return $this->userEmail;
-        }
+        }        
         # CU04 - Crear Rol
         public function createRol(){}
         # CU09 - Crear Usuario
-        public function createUser(){}
+        public function createUser(){}        
     }
 ?>

@@ -1,11 +1,18 @@
 <?php
+    require_once "models/User.php";
     class Roles{
         public function __construct(){}
         # CU04 - Crear Rol
         public function createRol(){
-            require_once "views/roles/admin/header.view.php";
-            require_once "views/modules/01_users/create_rol.view.php";
-            require_once "views/roles/admin/footer.view.php";
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                require_once "views/roles/admin/header.view.php";
+                require_once "views/modules/01_users/create_rol.view.php";
+                require_once "views/roles/admin/footer.view.php";
+            }
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $rolObj = new User(null,$_POST['rolName']);
+                header("Location: ?c=Roles&a=readRol");
+            }
         }
         # CU05 - Consultar Roles
         public function readRol(){

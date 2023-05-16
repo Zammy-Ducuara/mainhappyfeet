@@ -1,5 +1,5 @@
 <div class="borde controles">
-    <a href="" class="borde">Consultar Roles</a>
+    <a href="?c=Roles&a=createRol" class="borde">Crear Rol</a>
 </div>
 <div class="borde table-header">
     <h2>Consultar Roles</h2>

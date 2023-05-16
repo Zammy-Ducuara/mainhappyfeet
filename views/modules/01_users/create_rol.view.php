@@ -1,7 +1,7 @@
 <div class="borde controles">
-    <a href="" class="borde">Consultar Roles</a>    
+    <a href="?c=Roles&a=readRol" class="borde">Consultar Roles</a>    
 </div>
-<form action="" method="" class="borde">
+<form action="" method="post" class="borde">
     <div class="borde form-header">
         <h2>Crear Rol</h2>
     </div>
@@ -12,7 +12,7 @@
         </div>
         <div class="form-control">
             <label for="">Nombre</label>
-            <input type="text" placeholder="Nombre">
+            <input type="text" name="rolName" placeholder="Nombre">
         </div>        
     </div>
     <div class="borde form-footer">

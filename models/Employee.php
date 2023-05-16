@@ -1,6 +1,6 @@
 <?php
-    class Seller extends Credential{        
-        protected $salary;
+    class Employee extends Credential{        
+        protected $employeeSalary;
         public function __construct(){
             $a = func_get_args();
             $i = func_num_args();
@@ -8,13 +8,15 @@
                 call_user_func_array(array($this, $f), $a);
             }
         }
-        # Salario del Vendedor y del Administrador
-        public function setSalary($salary){
-            $this->salary = $salary;
+        # Salario del Empleado (Vendedor o Administrador)
+        public function setEmployeeSalary($employeeSalary){
+            $this->employeeSalary = $employeeSalary;
         }
-        public function getSalary(){
-            return $this->salary;
+        public function getEmployeeSalary(){
+            return $this->employeeSalary;
         }
+        # CU10 - Crear Administrador
+        public function createAdmin(){}
         # CU012 - Crear Vendedor
         public function createSeller(){} 
         # CU13 - Consultar Usuarios

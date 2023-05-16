@@ -68,7 +68,10 @@
             return $this->userEmail;
         }        
         # CU04 - Crear Rol
-        public function createRol(){}
+        public function createRol(){            
+            echo gettype($this->rolCode) . "<br>";
+            echo $this->rolName;
+        }
         # CU06 - Actualizar Rol
         public function updateRol(){}
         # CU05 - Consultar Roles

@@ -11,7 +11,10 @@
             }
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $rolObj = new User(null,$_POST['rolName']);
-                header("Location: ?c=Roles&a=readRol");
+                require_once "views/roles/admin/header.view.php";
+                $rolObj->createRol();
+                require_once "views/roles/admin/footer.view.php";
+                // header("Location: ?c=Roles&a=readRol");
             }
         }
         # CU05 - Consultar Roles

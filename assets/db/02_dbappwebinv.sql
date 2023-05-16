@@ -1,9 +1,9 @@
-## DROP DATABASE BBDD_INVENTARIO;
+## DROP DATABASE DBAPPWEBINV;
 -- -----------------------------------------------------
--- Estructura BBDD_INVENTARIO
+-- Estructura DBAPPWEBINV
 -- -----------------------------------------------------
-CREATE SCHEMA BBDD_INVENTARIO DEFAULT CHARACTER SET utf8 ;
-USE BBDD_INVENTARIO;
+CREATE SCHEMA DBAPPWEBINV DEFAULT CHARACTER SET utf8 ;
+USE DBAPPWEBINV;
 
 -- -----------------------------------------------------
 -- Tabla ROLES

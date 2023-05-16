@@ -171,6 +171,8 @@ form {
   flex-flow: row nowrap;
 }
 .table-header,
+.impreso-header,
+.grafico-header,
 .form-header {
   justify-content: center;
   padding: 10px;
@@ -277,6 +279,9 @@ td, th {
   text-align: left;
   text-align: center;
   padding: 8px;
+}
+.td-izq{
+  text-align: left;
 }
 tr:nth-child(even) {
   background-color: #dddddd;

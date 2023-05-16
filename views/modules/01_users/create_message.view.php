@@ -1,5 +1,5 @@
 <div class="borde controles">
-    <a href="" class="borde">Consultar Mensajes</a>
+    <a href="?c=Messages&a=readMessage" class="borde">Consultar Mensajes</a>
 </div>
 <form action="" method="" class="borde">
     <div class="borde form-header">

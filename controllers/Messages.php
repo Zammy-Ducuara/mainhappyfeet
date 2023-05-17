@@ -1,11 +1,34 @@
 <?php
+    require_once "models/User.php";
+    require_once "models/Message.php";
     class Messages{
         public function __construct(){}
         # CU017 - Crear Mensaje Usuario
         public function main(){
-            require_once "views/company/header.view.php";
-            require_once "views/company/contact.view.php";            
-            require_once "views/company/footer.view.php";
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                require_once "views/company/header.view.php";
+                require_once "views/company/contact.view.php";            
+                require_once "views/company/footer.view.php";
+            }
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {                
+                $userObj = new User(
+                    null,
+                    null,
+                    $_POST['userName'],
+                    $_POST['userLastName'],
+                    $_POST['userEmail']
+                );
+                $userCode = $userObj->createUser();
+                $messageObj = new Message(
+                    $userCode,
+                    null,
+                    null,                    
+                    $_POST['messageSubject'],
+                    $_POST['messageDescription']
+                );
+                $messageObj->createMessageUser();
+                header("Location: ?c=Messages");
+            }
         }
         # CU018 - Crear Mensaje
         public function createMessage(){

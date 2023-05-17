@@ -19,7 +19,7 @@ CREATE TABLE ROLES (
 -- -----------------------------------------------------
 CREATE TABLE USERS (
   rol_code INT NOT NULL,
-  user_code VARCHAR(10) NOT NULL,
+  user_code VARCHAR(100) NOT NULL,
   user_name VARCHAR(50) NOT NULL,
   user_lastname VARCHAR(50) NOT NULL,
   user_email VARCHAR(100) NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE CREDENTIALS (
 -- TABLA MESSAGES
 -- -----------------------------------------------------
 CREATE TABLE MESSAGES (
-  user_code VARCHAR(10) NOT NULL,
+  user_code VARCHAR(100) NOT NULL,
   message_date DATE NOT NULL,
   message_to VARCHAR(100) NOT NULL,
   message_subject VARCHAR(50) NOT NULL,

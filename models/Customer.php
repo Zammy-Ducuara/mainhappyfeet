@@ -8,7 +8,6 @@
                 call_user_func_array(array($this, $f), $a);
             }
         }
-        # Salario del Vendedor y del Administrador
         public function setCustomerBirthDate($customerBirthDate){
             $this->customerBirthDate = $customerBirthDate;
         }

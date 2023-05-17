@@ -1,15 +1,21 @@
 <?php
-    class Message{        
+    class Message{
+        private $dbh;        
         private $userCode;        
         private $messageDate;        
         private $messageTo;        
         private $messageSubject;        
         private $messageDescription;
         public function __construct(){
-            $a = func_get_args();
-            $i = func_num_args();
-            if (method_exists($this, $f = '__construct' . $i)) {
-                call_user_func_array(array($this, $f), $a);
+            try {
+                $this->dbh = DataBase::connection();
+                $a = func_get_args();
+                $i = func_num_args();
+                if (method_exists($this, $f = '__construct' . $i)) {
+                    call_user_func_array(array($this, $f), $a);
+                }
+            } catch (Exception $e) {
+                die($e->getMessage());
             }
         }
         public function __construct5($userCode,$messageDate,$messageTo,$messageSubject,$messageDescription){            
@@ -55,7 +61,26 @@
             return $this->messageDescription;
         }
         # CU017 - Crear Mensaje Usuario
-        public function createMessageUser(){}
+        public function createMessageUser(){
+            try {
+                $sql = 'INSERT INTO MESSAGES VALUES (
+                            :userCode,
+                            :MessageDate,
+                            :MessageTo,
+                            :MessageSubject,
+                            :MessageDescription
+                        )';
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->bindValue('userCode', $this->getUserCode());
+                $stmt->bindValue('MessageDate', date('Y-m-d'));
+                $stmt->bindValue('MessageTo', "profealbeiro2020@gmail.com");
+                $stmt->bindValue('MessageSubject', $this->getMessageSubject());
+                $stmt->bindValue('MessageDescription', $this->getMessageDescription());
+                $stmt->execute();
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        }
         # CU018 - Crear Mensaje
         public function createMessage(){}
         # CU19 - Consultar mis Mensajes

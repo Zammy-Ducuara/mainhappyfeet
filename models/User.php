@@ -154,16 +154,29 @@
         }        
         # CU09 - Crear Usuario
         public function createUser(){
-            try {
-                $sql = "SELECT * FROM USERS ORDER BY user_code DESC LIMIT 1;";
-                $stmt = $this->dbh->prepare($sql);
-                $stmt->execute();
+            try {                
+                $sql = "SELECT * FROM USERS ORDER BY user_code DESC LIMIT 1";
+                $stmt = $this->dbh->prepare($sql);                
+                $stmt->execute();                
                 $count = $stmt->fetch();
                 if ($count) {
                     $count = explode("-",$count['user_code']);
                     $count = (int)$count[1] + 1;
+                    if ($count < 10) {
+                        $count = "user-000000" . $count;
+                    } elseif ($count < 100 && $count >= 10) {
+                        $count = "user-00000" . $count;
+                    } elseif ($count < 1000 && $count >= 100) {
+                        $count = "user-0000" . $count;
+                    } elseif ($count < 10000 && $count >= 1000) {
+                        $count = "user-000" . $count;
+                    } elseif ($count < 100000 && $count >= 10000) {
+                        $count = "user-00" . $count;
+                    } elseif ($count < 1000000 && $count >= 100000) {
+                        $count = "user-0" . $count;
+                    }
                 } else {
-                    $count = 1;
+                    $count = "user-0000001";
                 }                
                 $sql = "INSERT INTO USERS VALUES (
                     :rolCode,
@@ -172,13 +185,14 @@
                     :userLastName,
                     :userEmail
                 )";                
-                $stmt = $this->dbh->prepare($sql);                
+                $stmt = $this->dbh->prepare($sql);
                 $stmt->bindValue('rolCode', 2);
-                $stmt->bindValue('userCode', "user-" . $count);                
+                $stmt->bindValue('userCode', $count);                
                 $stmt->bindValue('userName', $this->getUserName());                
                 $stmt->bindValue('userLastName', $this->getUserLastName());                
                 $stmt->bindValue('userEmail', $this->getUserEmail());                
                 $stmt->execute();
+                return $count;
             } catch (Exception $e) {
                 die($e->getMessage());
             }

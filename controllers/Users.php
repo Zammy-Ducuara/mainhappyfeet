@@ -21,8 +21,8 @@
                     $_POST['userName'],
                     $_POST['userLastName'],
                     $_POST['userEmail']
-                );                
-                print_r($userObj->createUser());
+                );
+                $userObj->createUser();
                 header("Location: ?c=Users&a=readUser");
             }
         }

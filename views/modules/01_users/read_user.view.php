@@ -6,8 +6,7 @@
 </div>
 <table>
     <thead>
-        <tr>
-            <th>Rol</th>
+        <tr>            
             <th>Código</th>
             <th>Nombres</th>
             <th>Apellidos</th>
@@ -17,8 +16,7 @@
     </thead>
     <tbody>
         <?php foreach ($users as $user) : ?>
-            <tr>
-                <td><?php echo $user->getRolCode(); ?></td>
+            <tr>                
                 <td><?php echo $user->getUserCode(); ?></td>
                 <td><?php echo $user->getUserName(); ?></td>
                 <td><?php echo $user->getUserLastName(); ?></td>

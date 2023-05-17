@@ -1,11 +1,30 @@
 <?php
+    require_once "models/User.php";
     class Users{
-        public function __construct(){}        
+        public function __construct(){}
+        public function main(){
+            require_once "views/roles/admin/header.view.php";
+            require_once "views/roles/admin/admin.view.php";
+            require_once "views/roles/admin/footer.view.php";
+        }
         # CU09 - Crear Usuario
         public function createUser(){
-            require_once "views/roles/admin/header.view.php";
-            require_once "views/modules/01_users/create_user.view.php";
-            require_once "views/roles/admin/footer.view.php";
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                require_once "views/roles/admin/header.view.php";
+                require_once "views/modules/01_users/create_user.view.php";
+                require_once "views/roles/admin/footer.view.php";
+            }
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $userObj = new User(
+                    null,
+                    null,
+                    $_POST['userName'],
+                    $_POST['userLastName'],
+                    $_POST['userEmail']
+                );                
+                print_r($userObj->createUser());
+                header("Location: ?c=Users&a=readUser");
+            }
         }
         # CU10 - Crear Administrador
         public function createAdmin(){
@@ -27,15 +46,32 @@
         }
         # CU13 - Consultar Usuarios
         public function readUser(){
-            require_once "views/roles/admin/header.view.php";
+            $users = new User;
+            $users = $users->readUser();
+            require_once "views/roles/admin/header.view.php";            
             require_once "views/modules/01_users/read_user.view.php";
             require_once "views/roles/admin/footer.view.php";
         }
         # CU14 - Actualizar Usuario
         public function updateUser(){
-            require_once "views/roles/admin/header.view.php";
-            require_once "views/modules/01_users/update_user.view.php";
-            require_once "views/roles/admin/footer.view.php";
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $user = new User;
+                $user = $user->getUserByCode($_GET['userCode']);
+                require_once "views/roles/admin/header.view.php";                
+                require_once "views/modules/01_users/update_user.view.php";
+                require_once "views/roles/admin/footer.view.php";
+            }
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {                
+                $user = new User(
+                    null,
+                    $_POST['userCode'],
+                    $_POST['userName'],
+                    $_POST['userLastName'],
+                    $_POST['userEmail']
+                );
+                $user->updateUser();
+                header('Location: ?c=Users&a=readUser');
+            }
         }
         # CU15 - Editar Perfil
         public function editProfile(){
@@ -45,7 +81,9 @@
         }
         # CU16 - Eliminar Usuario
         public function deleteUser(){
-            echo "Controlador para eliminar usuarios";
+            $user = new User;
+            $user->deleteUser($_GET['userCode']);
+            header('Location: ?c=Users&a=readUser');
         }
     }
 ?>

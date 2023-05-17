@@ -18,11 +18,7 @@
         # CU10 - Crear Administrador
         public function createAdmin(){}
         # CU012 - Crear Vendedor
-        public function createSeller(){} 
-        # CU13 - Consultar Usuarios
-        public function readUser(){}
-        # CU14 - Actualizar Usuario
-        public function updateUser(){}
+        public function createSeller(){}        
         # CU# - Generar reporte impreso de usuarios
         public function printedUserReport(){}
         # CU# - Generar reporte gráfico de usuarios

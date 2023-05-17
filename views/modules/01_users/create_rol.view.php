@@ -5,11 +5,7 @@
     <div class="borde form-header">
         <h2>Crear Rol</h2>
     </div>
-    <div class="borde form-body">
-        <div class="form-control">
-            <label for="">Código</label>
-            <input type="text" disabled>
-        </div>
+    <div class="borde form-body">        
         <div class="form-control">
             <label for="">Nombre</label>
             <input type="text" name="rolName" placeholder="Nombre">

@@ -44,13 +44,17 @@
         }
         # CU20 - Consultar Mensajes
         public function readMessage(){
-            require_once "views/roles/admin/header.view.php";
+            $messages = new Message;
+            $messages = $messages->readMessage();
+            require_once "views/roles/admin/header.view.php";            
             require_once "views/modules/01_users/read_message.view.php";
             require_once "views/roles/admin/footer.view.php";
         }        
         # CU21 - Eliminar Mensaje
         public function deleteMessage(){
-            echo "Controlador para eliminar mensaje";
+            $message = new Message;
+            $message->deleteMessage($_GET['userCode']);
+            header('Location: ?c=Messages&a=readMessage');
         }
     }
 ?>

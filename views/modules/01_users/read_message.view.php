@@ -18,44 +18,20 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>01/06/2023</td>
-            <td>user-1</td>
-            <td>Pepito</td>
-            <td>Perez</td>
-            <td>pepitoperez@gmail.com</td>
-            <td class="td-izq">Precio Producto</td>
-            <td class="td-izq">Me gustaría saber sobre el precio de una tablet xhm-330</td>
-            <td>
-                <a href="">Responder</a>
-                <a href="">Eliminar</a>
-            </td>
-        </tr>
-        <tr>
-            <td>01/06/2023</td>
-            <td>customer-1</td>
-            <td>Marinita</td>
-            <td>García</td>
-            <td>marinitagarcia@gmail.com</td>
-            <td class="td-izq">Qué pasó con el producto que solicité</td>
-            <td class="td-izq">No ha llegado el producto que solicité hace 15 días</td>
-            <td>
-                <a href="">Responder</a>
-                <a href="">Eliminar</a>
-            </td>
-        </tr>
-        <tr>
-            <td>01/06/2023</td>
-            <td>seller-1</td>
-            <td>Pedrito</td>
-            <td>Hernández</td>
-            <td>pedrohernandez@gmail.com</td>
-            <td class="td-izq">Excusa Médica</td>
-            <td class="td-izq">Jefe, hoy no puedo ir trabajar ya que estoy en urgencias</td>
-            <td>
-                <a href="">Responder</a>
-                <a href="">Eliminar</a>
-            </td>
-        </tr>
+        <?php foreach ($messages as $message) : ?>
+            <tr>
+                <td><?php echo $message->getMessageDate(); ?></td>
+                <td><?php echo $message->getUserCode(); ?></td>
+                <td><?php echo $message->getUserName(); ?></td>
+                <td><?php echo $message->getUserLastName(); ?></td>
+                <td><?php echo $message->getUserEmail(); ?></td>
+                <td class="td-izq"><?php echo $message->getMessageSubject(); ?></td>
+                <td class="td-izq"><?php echo $message->getMessageDescription(); ?></td>
+                <td>
+                    <a href="">Responder</a>
+                    <a href="?c=Messages&a=deleteMessage&userCode=<?php echo $message->getUserCode() ?>">Eliminar</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
     </tbody>
 </table>

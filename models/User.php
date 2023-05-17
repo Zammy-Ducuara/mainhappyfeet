@@ -163,20 +163,18 @@
                     $count = explode("-",$count['user_code']);
                     $count = (int)$count[1] + 1;
                     if ($count < 10) {
-                        $count = "user-000000" . $count;
-                    } elseif ($count < 100 && $count >= 10) {
                         $count = "user-00000" . $count;
-                    } elseif ($count < 1000 && $count >= 100) {
+                    } elseif ($count < 100 && $count >= 10) {
                         $count = "user-0000" . $count;
-                    } elseif ($count < 10000 && $count >= 1000) {
+                    } elseif ($count < 1000 && $count >= 100) {
                         $count = "user-000" . $count;
-                    } elseif ($count < 100000 && $count >= 10000) {
+                    } elseif ($count < 10000 && $count >= 1000) {
                         $count = "user-00" . $count;
-                    } elseif ($count < 1000000 && $count >= 100000) {
+                    } elseif ($count < 100000 && $count >= 10000) {
                         $count = "user-0" . $count;
-                    }
+                    } 
                 } else {
-                    $count = "user-0000001";
+                    $count = "user-000001";
                 }                
                 $sql = "INSERT INTO USERS VALUES (
                     :rolCode,
@@ -258,7 +256,7 @@
         # CU16 - Eliminar Usuario
         public function deleteUser($userCode){
             try {
-                $sql = 'DELETE FROM USERS WHERE user_code = :userCode';
+                $sql = 'DELETE FROM MESSAGES WHERE user_code = :userCode';
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->bindValue('userCode', $userCode);
                 $stmt->execute();

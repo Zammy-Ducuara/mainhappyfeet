@@ -1,7 +1,7 @@
-<?php
+<?php    
     class Message{
         private $dbh;
-        private $userCode;        
+        protected $userCode;        
         private $messageDate;        
         private $messageTo;        
         private $messageSubject;        
@@ -23,7 +23,7 @@
             $this->messageDate = $messageDate;
             $this->messageTo = $messageTo;
             $this->messageSubject = $messageSubject;
-            $this->messageDescription = $messageDescription;
+            $this->messageDescription = $messageDescription;            
         }
         # Código de Usuario
         public function setUserCode($userCode){
@@ -91,18 +91,19 @@
                 $messageList = [];
                 $sql = 'SELECT * FROM USERS INNER JOIN MESSAGES ON users.user_code = messages.user_code;';
                 $stmt = $this->dbh->query($sql);
-                foreach ($stmt->fetchAll() as $message) {
-                    $messageList[] = new Message(
-                        $message['user_code'],
-                        $message['user_name'],
-                        $message['user_lastname'],
-                        $message['user_email'],
-                        $message['message_date'],
-                        $message['message_to'],
-                        $message['message_subject'],
-                        $message['message_description']
-                    );
-                }
+                $messageList = $stmt->fetchAll();
+                // foreach ($stmt->fetchAll() as $message) {
+                //     $messageList[] = new Message(
+                //         $message['user_code'],
+                //         $message['user_name'],
+                //         $message['user_lastname'],
+                //         $message['user_email'],
+                //         $message['message_date'],
+                //         $message['message_to'],
+                //         $message['message_subject'],
+                //         $message['message_description']
+                //     );
+                // }
                 return $messageList;
             } catch (Exception $e) {
                 die($e->getMessage());

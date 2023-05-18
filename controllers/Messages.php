@@ -2,6 +2,7 @@
     require_once "models/User.php";
     require_once "models/Message.php";
     class Messages{
+        private $prueba;
         public function __construct(){}
         # CU017 - Crear Mensaje Usuario
         public function main(){
@@ -44,11 +45,10 @@
             require_once "views/roles/admin/footer.view.php";
         }
         # CU20 - Consultar Mensajes
-        public function readMessage(){
-            $messages = new Message;
+        public function readMessage(){            
             // $messages = $messages->readMessage();
             require_once "views/roles/admin/header.view.php";
-            $message->getUser();
+            // print_r($messages);
             // require_once "views/modules/01_users/read_message.view.php";
             require_once "views/roles/admin/footer.view.php";
         }        

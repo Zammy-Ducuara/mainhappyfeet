@@ -7,6 +7,7 @@
         protected $userName;
         protected $userLastName;
         protected $userEmail;
+        private $messages;
         public function __construct(){
             try {
                 $this->dbh = DataBase::connection();
@@ -17,8 +18,8 @@
                 }
             } catch (Exception $e) {
                 die($e->getMessage());
-            }
-        }
+            }            
+        }        
         public function __construct2($rolCode,$rolName){
             $this->rolCode = $rolCode;
             $this->rolName = $rolName;
@@ -79,6 +80,18 @@
         }
         public function getUserEmail(){
             return $this->userEmail;
+        }
+        public function addMessage($messageDate,$messageTo,$messageSubject,$messageDescription){
+            $this->messages = new Message(
+                $this->getUserCode(),                
+                $messageDate,
+                $messageTo,
+                $messageSubject,
+                $messageDescription
+            );
+        }
+        public function sendMessage(){
+            $this->messages->createMessageUser();
         }        
         # CU04 - Crear Rol
         public function createRol(){
@@ -151,31 +164,39 @@
             } catch (Exception $e) {
                 die($e->getMessage());
             }            
-        }        
-        # CU09 - Crear Usuario
-        public function createUser(){
-            try {                
+        }
+        # CU09_01 - Crear el consecutivo de usuario
+        public function createUserCode(){
+            try {
                 $sql = "SELECT * FROM USERS ORDER BY user_code DESC LIMIT 1";
                 $stmt = $this->dbh->prepare($sql);                
                 $stmt->execute();                
-                $count = $stmt->fetch();
-                if ($count) {
-                    $count = explode("-",$count['user_code']);
-                    $count = (int)$count[1] + 1;
-                    if ($count < 10) {
-                        $count = "user-00000" . $count;
-                    } elseif ($count < 100 && $count >= 10) {
-                        $count = "user-0000" . $count;
-                    } elseif ($count < 1000 && $count >= 100) {
-                        $count = "user-000" . $count;
-                    } elseif ($count < 10000 && $count >= 1000) {
-                        $count = "user-00" . $count;
-                    } elseif ($count < 100000 && $count >= 10000) {
-                        $count = "user-0" . $count;
+                $userCode = $stmt->fetch();
+                if ($userCode) {
+                    $userCode = explode("-",$userCode['user_code']);
+                    $userCode = (int)$userCode[1] + 1;
+                    if ($userCode < 10) {
+                        $userCode = "user-00000" . $userCode;
+                    } elseif ($userCode < 100 && $userCode >= 10) {
+                        $userCode = "user-0000" . $userCode;
+                    } elseif ($userCode < 1000 && $userCode >= 100) {
+                        $userCode = "user-000" . $userCode;
+                    } elseif ($userCode < 10000 && $userCode >= 1000) {
+                        $userCode = "user-00" . $userCode;
+                    } elseif ($userCode < 100000 && $userCode >= 10000) {
+                        $userCode = "user-0" . $userCode;
                     } 
                 } else {
-                    $count = "user-000001";
-                }                
+                    $userCode = "user-000001";
+                }
+                return $userCode; 
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        }         
+        # CU09 - Crear Usuario
+        public function createUser(){
+            try {
                 $sql = "INSERT INTO USERS VALUES (
                     :rolCode,
                     :userCode,
@@ -185,12 +206,11 @@
                 )";                
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->bindValue('rolCode', 2);
-                $stmt->bindValue('userCode', $count);                
+                $stmt->bindValue('userCode', $this->getUserCode()); 
                 $stmt->bindValue('userName', $this->getUserName());                
                 $stmt->bindValue('userLastName', $this->getUserLastName());                
                 $stmt->bindValue('userEmail', $this->getUserEmail());                
-                $stmt->execute();
-                return $count;
+                $stmt->execute();                
             } catch (Exception $e) {
                 die($e->getMessage());
             }
@@ -256,7 +276,7 @@
         # CU16 - Eliminar Usuario
         public function deleteUser($userCode){
             try {
-                $sql = 'DELETE FROM MESSAGES WHERE user_code = :userCode';
+                $sql = 'DELETE FROM USERS WHERE user_code = :userCode';
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->bindValue('userCode', $userCode);
                 $stmt->execute();

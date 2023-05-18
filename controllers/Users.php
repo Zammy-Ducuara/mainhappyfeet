@@ -15,14 +15,16 @@
                 require_once "views/roles/admin/footer.view.php";
             }
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $userObj = new User(
+                $userCode = new User;
+                $userCode = $userCode->createUserCode();
+                $user = new User(
                     null,
-                    null,
+                    $userCode,
                     $_POST['userName'],
                     $_POST['userLastName'],
                     $_POST['userEmail']
                 );
-                $userObj->createUser();
+                $user->createUser();
                 header("Location: ?c=Users&a=readUser");
             }
         }

@@ -10,24 +10,25 @@
                 require_once "views/company/contact.view.php";            
                 require_once "views/company/footer.view.php";
             }
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {                
-                $userObj = new User(
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $userCode = new User;
+                $userCode = $userCode->createUserCode();
+                $userMessage = new User(
                     null,
-                    null,
+                    $userCode,
                     $_POST['userName'],
                     $_POST['userLastName'],
                     $_POST['userEmail']
-                );
-                $userCode = $userObj->createUser();
-                $messageObj = new Message(
-                    $userCode,
-                    null,
-                    null,                    
+                );                
+                $userMessage->addMessage(                    
+                    date('Y-m-d'),
+                    "profealbeiro2020@gmail.com",
                     $_POST['messageSubject'],
-                    $_POST['messageDescription']
+                    $_POST['messageDescription']                    
                 );
-                $messageObj->createMessageUser();
-                header("Location: ?c=Messages");
+                $userMessage->createUser();
+                $userMessage->sendMessage();
+                header("Location:?c=Messages");
             }
         }
         # CU018 - Crear Mensaje
@@ -45,9 +46,10 @@
         # CU20 - Consultar Mensajes
         public function readMessage(){
             $messages = new Message;
-            $messages = $messages->readMessage();
-            require_once "views/roles/admin/header.view.php";            
-            require_once "views/modules/01_users/read_message.view.php";
+            // $messages = $messages->readMessage();
+            require_once "views/roles/admin/header.view.php";
+            $message->getUser();
+            // require_once "views/modules/01_users/read_message.view.php";
             require_once "views/roles/admin/footer.view.php";
         }        
         # CU21 - Eliminar Mensaje

@@ -1,10 +1,7 @@
 <?php
     class Message{
-        private $dbh;        
+        private $dbh;
         private $userCode;        
-        private $userName;        
-        private $userLastName;
-        private $userEmail;
         private $messageDate;        
         private $messageTo;        
         private $messageSubject;        
@@ -28,44 +25,13 @@
             $this->messageSubject = $messageSubject;
             $this->messageDescription = $messageDescription;
         }
-        public function __construct8($userCode,$userName,$userLastName,$userEmail,$messageDate,$messageTo,$messageSubject,$messageDescription){            
-            $this->userCode = $userCode;
-            $this->userName = $userName;
-            $this->userLastName = $userLastName;
-            $this->userEmail = $userEmail;
-            $this->messageDate = $messageDate;
-            $this->messageTo = $messageTo;
-            $this->messageSubject = $messageSubject;
-            $this->messageDescription = $messageDescription;
-        }
         # Código de Usuario
         public function setUserCode($userCode){
             $this->userCode = $userCode;
         }
         public function getUserCode(){
             return $this->userCode;
-        }        
-        # Nombres de Usuario
-        public function setUserName($userName){
-            $this->userName = $userName;
         }
-        public function getUserName(){
-            return $this->userName;
-        }
-        # Apellidos de Usuario
-        public function setUserLastName($userLastName){
-            $this->userLastName = $userLastName;
-        }
-        public function getuserLastName(){
-            return $this->userLastName;
-        }
-        # Email de Usuario
-        public function setUserEmail($userEmail){
-            $this->userEmail = $userEmail;
-        }
-        public function getUserEmail(){
-            return $this->userEmail;
-        }        
         # Fecha del Mensaje
         public function setMessageDate($messageDate){
             $this->messageDate = $messageDate;
@@ -106,8 +72,8 @@
                         )';
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->bindValue('userCode', $this->getUserCode());
-                $stmt->bindValue('MessageDate', date('Y-m-d'));
-                $stmt->bindValue('MessageTo', "profealbeiro2020@gmail.com");
+                $stmt->bindValue('MessageDate', $this->getMessageDate());
+                $stmt->bindValue('MessageTo', $this->getMessageTo());
                 $stmt->bindValue('MessageSubject', $this->getMessageSubject());
                 $stmt->bindValue('MessageDescription', $this->getMessageDescription());
                 $stmt->execute();

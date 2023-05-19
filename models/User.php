@@ -7,7 +7,7 @@
         protected $userName;
         protected $userLastName;
         protected $userEmail;
-        private $messages;
+        private $message ;
         public function __construct(){
             try {
                 $this->dbh = DataBase::connection();
@@ -38,7 +38,14 @@
             $this->userName = $userName;
             $this->userLastName = $userLastName;
             $this->userEmail = $userEmail;
-        }        
+        }
+        public function __construct8($userCode,$userName,$userLastName,$userEmail,$messageDate, $messageTo,$messageSubject,$messageDescription){            
+            $this->userCode = $userCode;
+            $this->userName = $userName;
+            $this->userLastName = $userLastName;
+            $this->userEmail = $userEmail;
+            $this->message = new Message($userCode, $messageDate, $messageTo, $messageSubject, $messageDescription);
+        }       
         # Código del Rol
         public function setRolCode($rolCode){
             $this->rolCode = $rolCode;
@@ -81,18 +88,27 @@
         public function getUserEmail(){
             return $this->userEmail;
         }
-        public function addMessage($messageDate,$messageTo,$messageSubject,$messageDescription){
-            $this->messages = new Message(
-                $this->getUserCode(),                
-                $messageDate,
-                $messageTo,
-                $messageSubject,
-                $messageDescription
-            );
+        # Mensaje del Usuario        
+        public function getMessageDate(){
+            return $this->message->getMessageDate();
         }
-        public function sendMessage(){
-            $this->messages->createMessageUser();
-        }        
+        public function getMessageTo(){
+            return $this->message->getMessageTo();
+        }
+        public function getMessageSubject(){
+            return $this->message->getMessageSubject();
+        }
+        public function getMessageDescription(){
+            return $this->message->getMessageDescription();
+        }
+        public function sendMessageUser(){
+            $this->message->createMessageUser();
+        }
+
+/*  ---------------------------------------------------------------------------  */
+/*  ------------------------------- CASOS DE USO ------------------------------  */
+/*  ---------------------------------------------------------------------------  */
+        
         # CU04 - Crear Rol
         public function createRol(){
             try {                

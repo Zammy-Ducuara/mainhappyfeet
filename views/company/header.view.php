@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Empresa</title>
     <link rel="stylesheet" href="assets/css/styles_landing.css">
 </head>
+
 <body>
     <div class="container">
         <nav class="borde">
@@ -19,8 +21,8 @@
                 <div class="inicio">
                     <a href="?">Inicio</a>
                 </div>
-                <div class="navega">                    
-                    <a href="?c=Messages">Contáctanos</a>
+                <div class="navega">
+                    <a href="?c=Messages&a=createMessageUser">Contáctanos</a>
                     <a href="?c=Register">Registrate</a>
                 </div>
             </div>

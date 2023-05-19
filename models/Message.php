@@ -60,6 +60,11 @@
         public function getMessageDescription(){
             return $this->messageDescription;
         }
+
+/*  ---------------------------------------------------------------------------  */
+/*  ------------------------------- CASOS DE USO ------------------------------  */
+/*  ---------------------------------------------------------------------------  */
+
         # CU017 - Crear Mensaje Usuario
         public function createMessageUser(){
             try {
@@ -72,7 +77,7 @@
                         )';
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->bindValue('userCode', $this->getUserCode());
-                $stmt->bindValue('MessageDate', $this->getMessageDate());
+                $stmt->bindValue('MessageDate', date('Y-m-d'));
                 $stmt->bindValue('MessageTo', $this->getMessageTo());
                 $stmt->bindValue('MessageSubject', $this->getMessageSubject());
                 $stmt->bindValue('MessageDescription', $this->getMessageDescription());
@@ -90,20 +95,19 @@
             try {
                 $messageList = [];
                 $sql = 'SELECT * FROM USERS INNER JOIN MESSAGES ON users.user_code = messages.user_code;';
-                $stmt = $this->dbh->query($sql);
-                $messageList = $stmt->fetchAll();
-                // foreach ($stmt->fetchAll() as $message) {
-                //     $messageList[] = new Message(
-                //         $message['user_code'],
-                //         $message['user_name'],
-                //         $message['user_lastname'],
-                //         $message['user_email'],
-                //         $message['message_date'],
-                //         $message['message_to'],
-                //         $message['message_subject'],
-                //         $message['message_description']
-                //     );
-                // }
+                $stmt = $this->dbh->query($sql);                
+                foreach ($stmt->fetchAll() as $message) {
+                    $messageList[] = new User(
+                        $message['user_code'],
+                        $message['user_name'],
+                        $message['user_lastname'],
+                        $message['user_email'],
+                        $message['message_date'],
+                        $message['message_to'],
+                        $message['message_subject'],
+                        $message['message_description']
+                    );
+                }
                 return $messageList;
             } catch (Exception $e) {
                 die($e->getMessage());

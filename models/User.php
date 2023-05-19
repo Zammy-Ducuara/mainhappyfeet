@@ -187,14 +187,19 @@
                 $userCreate = $_GET["a"];
                 if ($userCreate == "createMessageUser" OR $userCreate == "createUser" ) {
                     $userType = "user";
+                    $userRol = 2;
                 } elseif ($userCreate == "createAdmin") {
                     $userType = "admin";
+                    $userRol = 1;
                 } elseif ($userCreate == "createCustomer" OR $userCreate == "register") {
                     $userType = "customer";
+                    $userRol = 3;
                 } elseif ($userCreate == "createSeller") {
                     $userType = "seller";
+                    $userRol = 4;
                 }
-                $sql = "SELECT * FROM USERS ORDER BY user_code DESC LIMIT 1";
+                $sql = "SELECT * FROM USERS WHERE rol_code = $userRol 
+                        ORDER BY user_code DESC LIMIT 1";
                 $stmt = $this->dbh->prepare($sql);                
                 $stmt->execute();                                
                 $userCode = $stmt->fetch();

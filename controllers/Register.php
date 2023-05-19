@@ -26,7 +26,7 @@
                 $customer = new Customer(
                     $userCode,
                     "",
-                    "",
+                    null,
                     null,
                     $_POST["credentialPass"],
                     false

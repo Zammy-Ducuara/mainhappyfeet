@@ -184,26 +184,36 @@
         # CU09_01 - Crear el consecutivo de usuario
         public function createUserCode(){
             try {
+                $userCreate = $_GET["a"];
+                if ($userCreate == "createMessageUser" OR $userCreate == "createUser" ) {
+                    $userType = "user";
+                } elseif ($userCreate == "createAdmin") {
+                    $userType = "admin";
+                } elseif ($userCreate == "createCustomer" OR $userCreate == "register") {
+                    $userType = "customer";
+                } elseif ($userCreate == "createSeller") {
+                    $userType = "seller";
+                }
                 $sql = "SELECT * FROM USERS ORDER BY user_code DESC LIMIT 1";
                 $stmt = $this->dbh->prepare($sql);                
-                $stmt->execute();                
+                $stmt->execute();                                
                 $userCode = $stmt->fetch();
                 if ($userCode) {
-                    $userCode = explode("-",$userCode['user_code']);
+                    $userCode = explode("-",$userCode['user_code']);                    
                     $userCode = (int)$userCode[1] + 1;
                     if ($userCode < 10) {
-                        $userCode = "user-00000" . $userCode;
+                        $userCode = "$userType-00000" . $userCode;
                     } elseif ($userCode < 100 && $userCode >= 10) {
-                        $userCode = "user-0000" . $userCode;
+                        $userCode = "$userType-0000" . $userCode;
                     } elseif ($userCode < 1000 && $userCode >= 100) {
-                        $userCode = "user-000" . $userCode;
+                        $userCode = "$userType-000" . $userCode;
                     } elseif ($userCode < 10000 && $userCode >= 1000) {
-                        $userCode = "user-00" . $userCode;
+                        $userCode = "$userType-00" . $userCode;
                     } elseif ($userCode < 100000 && $userCode >= 10000) {
-                        $userCode = "user-0" . $userCode;
-                    } 
+                        $userCode = "$userType-0" . $userCode;
+                    }                    
                 } else {
-                    $userCode = "user-000001";
+                    $userCode = "$userType-000001";
                 }
                 return $userCode; 
             } catch (Exception $e) {
@@ -213,6 +223,16 @@
         # CU09 - Crear Usuario
         public function createUser(){
             try {
+                $userCreate = $_GET["a"];
+                if ($userCreate == "createMessageUser" OR $userCreate == "createUser" ) {
+                    $userRol = 2;
+                } elseif ($userCreate == "createAdmin") {
+                    $userRol = 1;
+                } elseif ($userCreate == "createCustomer" OR $userCreate == "register") {
+                    $userRol = 3;
+                } elseif ($userCreate == "createSeller") {
+                    $userRol = 4;
+                }
                 $sql = "INSERT INTO USERS VALUES (
                     :rolCode,
                     :userCode,
@@ -221,7 +241,7 @@
                     :userEmail
                 )";                
                 $stmt = $this->dbh->prepare($sql);
-                $stmt->bindValue('rolCode', 2);
+                $stmt->bindValue('rolCode', $userRol);
                 $stmt->bindValue('userCode', $this->getUserCode()); 
                 $stmt->bindValue('userName', $this->getUserName());                
                 $stmt->bindValue('userLastName', $this->getUserLastName());                

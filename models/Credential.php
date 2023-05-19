@@ -1,17 +1,25 @@
 <?php
-    class Credential extends User{        
+    require_once "models/User.php";
+    class Credential extends User{
+        private $dbh;       
+        protected $credentialCode;
         protected $credentialPhoto;
         protected $credentialId;
         protected $credentialStartDate;
         protected $credentialPass;
-        protected $credentialStatus;
+        protected $credentialStatus = false;
         public function __construct(){
-            $a = func_get_args();
-            $i = func_num_args();
-            if (method_exists($this, $f = '__construct' . $i)) {
-                call_user_func_array(array($this, $f), $a);
+            try {
+                $this->dbh = DataBase::connection();
+                $a = func_get_args();
+                $i = func_num_args();
+                if (method_exists($this, $f = '__construct' . $i)) {
+                    call_user_func_array(array($this, $f), $a);
+                }
+            } catch (Exception $e) {
+                die($e->getMessage());
             }
-        }
+        }        
         public function __construct5($credentialPhoto,$credentialId,$credentialStartDate,$credentialPass,$credentialStatus){            
             $this->credentialPhoto = $credentialPhoto;
             $this->credentialId = $credentialId;
@@ -19,6 +27,33 @@
             $this->credentialPass = $credentialPass;
             $this->credentialStatus = $credentialStatus;
         }
+        public function __construct6($credentialCode,$credentialPhoto,$credentialId,$credentialStartDate,$credentialPass,$credentialStatus){            
+            $this->credentialCode = $credentialCode;
+            $this->credentialPhoto = $credentialPhoto;
+            $this->credentialId = $credentialId;
+            $this->credentialStartDate = $credentialStartDate;
+            $this->credentialPass = $credentialPass;
+            $this->credentialStatus = $credentialStatus;
+        }
+        public function __construct10($rolCode,$userCode,$userName,$userLastName,$userEmail,$credentialPhoto,$credentialId,$credentialStartDate,$credentialPass,$credentialStatus){
+            $this->rolCode = $rolCode;            
+            $this->userCode = $userCode;
+            $this->userName = $userName;
+            $this->userLastName = $userLastName;
+            $this->userEmail = $userEmail;            
+            $this->credentialPhoto = $credentialPhoto;
+            $this->credentialId = $credentialId;
+            $this->credentialStartDate = $credentialStartDate;
+            $this->credentialPass = $credentialPass;
+            $this->credentialStatus = $credentialStatus;
+        }
+        # Foto de Credencial
+        public function setCredentialCode($credentialCode){
+            $this->credentialCode = $credentialCode;
+        }
+        public function getCredentialCode(){
+            return $this->credentialCode;
+        }               
         # Foto de Credencial
         public function setCredentialPhoto($credentialPhoto){
             $this->credentialPhoto = $credentialPhoto;
@@ -63,6 +98,6 @@
         # CU08 - Registrarse
         public function register(){}
         # CU15 - Editar Perfil
-        public function editProfile(){}
+        public function editProfile(){}        
     }
 ?>

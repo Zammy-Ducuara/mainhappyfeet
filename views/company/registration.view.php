@@ -6,23 +6,23 @@
         <div class="borde form-body">
             <div class="form-control">
                 <label for="">Nombres</label>
-                <input type="text" placeholder="Nombres">
+                <input type="text" name="userName" placeholder="Nombres">
             </div>
             <div class="form-control">
                 <label for="">Apellidos</label>
-                <input type="text" placeholder="Apellidos">
+                <input type="text" name="userLastName" placeholder="Apellidos">
             </div>
             <div class="form-control">
                 <label for="">Email</label>
-                <input type="text" placeholder="Email">
+                <input type="text" name="userEmail" placeholder="Email">
             </div>
             <div class="form-control">
                 <label for="">Contraseña</label>
-                <input type="text" placeholder="Contraseña">
+                <input type="text" name="credentialPass" placeholder="Contraseña">
             </div>
             <div class="form-control">
                 <label for="">Confirmación</label>
-                <input type="text" placeholder="Contraseña">
+                <input type="text" name="credentialPassConfirm" placeholder="Confirmación">
             </div>
         </div>
         <div class="borde form-footer">

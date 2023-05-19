@@ -1,11 +1,40 @@
-<?php
+<?php    
+    require_once "models/Customer.php";    
     class Register{
         public function __construct(){}
-        # CU08 - Registrarse
         public function main(){
-            require_once "views/company/header.view.php";            
-            require_once "views/company/registration.view.php";            
-            require_once "views/company/footer.view.php";
+            header("Location:?");
+        }
+        # CU08 - Registrarse
+        public function register(){
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                require_once "views/company/header.view.php";            
+                require_once "views/company/registration.view.php";            
+                require_once "views/company/footer.view.php";
+            }
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {                
+                require_once "views/company/header.view.php";
+                $userCode = new User;
+                $userCode = $userCode->createUserCode();
+                $user = new User(
+                    null,
+                    $userCode,
+                    $_POST["userName"],
+                    $_POST["userLastName"],
+                    $_POST["userLastName"]
+                );
+                $customer = new Customer(
+                    $userCode,
+                    "",
+                    "",
+                    null,
+                    $_POST["credentialPass"],
+                    false
+                );
+                $user->createUser();                
+                $customer->createCustomer();                
+                require_once "views/company/footer.view.php";
+            }
         }
     }
 ?>

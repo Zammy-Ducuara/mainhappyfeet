@@ -23,7 +23,7 @@
                 </div>
                 <div class="navega">
                     <a href="?c=Messages&a=createMessageUser">Contáctanos</a>
-                    <a href="?c=Register">Registrate</a>
+                    <a href="?c=Register&a=register">Registrate</a>
                 </div>
             </div>
             <div class="borde ingreso">

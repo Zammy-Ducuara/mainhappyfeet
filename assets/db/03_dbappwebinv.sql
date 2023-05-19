@@ -24,8 +24,7 @@ CREATE TABLE USERS (
   user_lastname VARCHAR(50) NOT NULL,
   user_email VARCHAR(100) NOT NULL,
   PRIMARY KEY (user_code),
-  INDEX ind_user_rol (rol_code ASC),
-  UNIQUE INDEX uq_user_email (user_email ASC),
+  INDEX ind_user_rol (rol_code ASC),  
   CONSTRAINT fk_user_rol
     FOREIGN KEY (rol_code)
     REFERENCES ROLES (rol_code)
@@ -37,9 +36,9 @@ CREATE TABLE USERS (
 -- TABLA CREDENTIALS
 -- -----------------------------------------------------
 CREATE TABLE CREDENTIALS (
-  credential_code VARCHAR(10) NOT NULL,
-  credential_photo BLOB NOT NULL,
-  credential_id VARCHAR(30) NOT NULL,
+  credential_code VARCHAR(100) NOT NULL,
+  credential_photo BLOB,
+  credential_id VARCHAR(30),
   credential_startdate DATE NOT NULL,
   credential_pass VARCHAR(150) NOT NULL,
   credential_status TINYINT NOT NULL,

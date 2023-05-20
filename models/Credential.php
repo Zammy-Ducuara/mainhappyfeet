@@ -89,6 +89,29 @@
         public function getCredentialStatus(){
             return $this->credentialStatus;
         }
+        # CU011 - Crear Credencial
+        public function createCredential(){
+            try {
+                $sql = "INSERT INTO CREDENTIALS VALUES (
+                    :credentialCode,
+                    :credentialPhoto,
+                    :credentialId,
+                    :credentialStartDate,
+                    :credentialPass,
+                    :credentialStatus
+                )";                
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->bindValue('credentialCode', $this->getCredentialCode());
+                $stmt->bindValue('credentialPhoto', $this->getCredentialPhoto()); 
+                $stmt->bindValue('credentialId', $this->getCredentialId());                
+                $stmt->bindValue('credentialStartDate', date('Y-m-d'));                
+                $stmt->bindValue('credentialPass', sha1($this->getCredentialPass()));
+                $stmt->bindValue('credentialStatus', $this->getCredentialStatus());
+                $stmt->execute();                
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        } 
         # CU01 - Iniciar Sesión
         public function login(){}
         # CU03 - Cerrar Sesión

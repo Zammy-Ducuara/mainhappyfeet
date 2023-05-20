@@ -1,11 +1,11 @@
 <?php
     require_once "models/User.php";
+    require_once "models/Credential.php";
+    require_once "models/Employee.php";
     class Users{
         public function __construct(){}
         public function main(){
-            require_once "views/roles/admin/header.view.php";
-            require_once "views/roles/admin/admin.view.php";
-            require_once "views/roles/admin/footer.view.php";
+            header("Location:?c=Dashboard");
         }
         # CU09 - Crear Usuario
         public function createUser(){
@@ -31,14 +31,31 @@
         # CU10 - Crear Administrador
         public function createAdmin(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                $userCode = new User();
-                $userCode = $userCode->createUserCode();                
+                $userCode = new User();                
                 require_once "views/roles/admin/header.view.php";
                 require_once "views/modules/01_users/create_admin.view.php";
                 require_once "views/roles/admin/footer.view.php";
             }
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                header("Location:?c=Users&a=readUser");
+                require_once "views/roles/admin/header.view.php";
+                $userCode = new User;
+                $userCode = $userCode->createUserCode();
+                $userAdmin = new Employee(
+                    1,
+                    $userCode,
+                    "Juan",
+                    "Sin Miedo",
+                    "juan@sinmiedo.com",
+                    null,
+                    null,
+                    date('Y-m-d'),
+                    sha1("12345"),
+                    false,
+                    1500000
+                );
+                print_r($userAdmin);
+                require_once "views/roles/admin/footer.view.php";
+                // header("Location:?c=Users&a=readUser");
             }
         }
         # CU011 - Crear Cliente

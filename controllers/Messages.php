@@ -1,8 +1,7 @@
 <?php
     require_once "models/User.php";
     require_once "models/Message.php";
-    class Messages{
-        private $prueba;
+    class Messages{        
         public function __construct(){}        
         # CU017 - Crear Mensaje Usuario
         public function createMessageUser(){

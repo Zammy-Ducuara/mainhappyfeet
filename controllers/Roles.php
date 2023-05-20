@@ -3,6 +3,9 @@
     class Roles{
         public function __construct(){}
         # CU04 - Crear Rol
+        public function main(){
+            header("Location:?c=Dashboard");
+        }
         public function createRol(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 require_once "views/roles/admin/header.view.php";

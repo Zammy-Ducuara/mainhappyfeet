@@ -11,48 +11,48 @@
     <div class="borde form-body">
         <div class="form-control">
             <label for="">Código Usuario</label>
-            <input type="hidden" name="userCode" value="<?php echo $userCode ?>">
-            <input type="text" name="userCode" value="<?php echo $userCode ?>" disabled>
+            <input type="hidden" name="userCode" value="<?php echo $userCode->createUserCode() ?>">
+            <input type="text" name="userCode" value="<?php echo $userCode->createUserCode() ?>" disabled>
         </div>
         <div class="form-control">
             <label for="">Foto</label>
-            <input type="file" class="file-select">
+            <input type="file" name="credentialPhoto" class="file-select">
         </div>
         <div class="form-control">
             <label for="">Identificación</label>
-            <input type="text" placeholder="Número de Identificación">
+            <input type="text" name="credentialId" placeholder="Número de Identificación">
         </div>
         <div class="form-control">
             <label for="">Nombres</label>
-            <input type="text" placeholder="Nombres">
+            <input type="text" name="userName" placeholder="Nombres">
         </div>
         <div class="form-control">
             <label for="">Apellidos</label>
-            <input type="text" placeholder="Apellidos">
+            <input type="text" name="userLastName" placeholder="Apellidos">
         </div>
         <div class="form-control">
             <label for="">Email</label>
-            <input type="text" placeholder="Email">
+            <input type="text" name="userEmail" placeholder="Email">
         </div>
         <div class="form-control">
             <label for="">Fecha de Ingreso</label>
-            <input type="date">
+            <input type="date" name="credentialStartDate">
         </div>
         <div class="form-control">
             <label for="">Salario</label>
-            <input type="number" placeholder="Confirmación de Contraseña">
+            <input type="number" placeholder="Salario en pesos">
         </div>
         <div class="form-control">
             <label for="">Contraseña</label>
-            <input type="password" placeholder="Contraseña">
+            <input type="password" name="credentialPass" placeholder="Contraseña">
         </div>
         <div class="form-control">
             <label for="">Confirmación</label>
-            <input type="password" placeholder="Confirmación de Contraseña">
+            <input type="password" name="credentialPassConfirm" placeholder="Confirmación de Contraseña">
         </div>
         <div class="form-control">
             <label for="">Estado</label>
-            <select>
+            <select name="credentialStatus">
                 <option value="false">Inactivo</option>
                 <option value="true">Activo</option>
             </select>

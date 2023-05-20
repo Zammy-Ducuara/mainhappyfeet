@@ -37,7 +37,7 @@ CREATE TABLE USERS (
 -- -----------------------------------------------------
 CREATE TABLE CREDENTIALS (
   credential_code VARCHAR(100) NOT NULL,
-  credential_photo BLOB,
+  credential_photo LONGBLOB,
   credential_id VARCHAR(30),
   credential_startdate DATE NOT NULL,
   credential_pass VARCHAR(150) NOT NULL,

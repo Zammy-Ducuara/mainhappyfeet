@@ -18,11 +18,11 @@
             </div>
             <div class="form-control">
                 <label for="">Contraseña</label>
-                <input type="text" name="credentialPass" placeholder="Contraseña">
+                <input type="password" name="credentialPass" placeholder="Contraseña">
             </div>
             <div class="form-control">
                 <label for="">Confirmación</label>
-                <input type="text" name="credentialPassConfirm" placeholder="Confirmación">
+                <input type="password" name="credentialPassConfirm" placeholder="Confirmación">
             </div>
         </div>
         <div class="borde form-footer">

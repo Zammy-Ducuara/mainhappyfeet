@@ -20,11 +20,11 @@
                     $userCode,
                     $_POST["userName"],
                     $_POST["userLastName"],
-                    $_POST["userLastName"]
+                    $_POST["userEmail"]
                 );
                 $customer = new Customer(
                     $userCode,
-                    "",
+                    null,
                     null,
                     null,
                     $_POST["credentialPass"],

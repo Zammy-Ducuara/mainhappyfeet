@@ -192,10 +192,10 @@
                     $userType = "admin";
                     $userRol = 1;
                 } elseif ($userCreate == "createCustomer" OR $userCreate == "register") {
-                    $userType = "customer";
+                    $userType = "cust";
                     $userRol = 3;
                 } elseif ($userCreate == "createSeller") {
-                    $userType = "seller";
+                    $userType = "sell";
                     $userRol = 4;
                 }
                 $sql = "SELECT * FROM USERS WHERE rol_code = $userRol 

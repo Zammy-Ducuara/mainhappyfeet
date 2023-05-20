@@ -12,8 +12,7 @@
                 require_once "views/company/registration.view.php";            
                 require_once "views/company/footer.view.php";
             }
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {                
-                require_once "views/company/header.view.php";
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $userCode = new User;
                 $userCode = $userCode->createUserCode();
                 $user = new User(
@@ -32,8 +31,8 @@
                     false
                 );
                 $user->createUser();                
-                $customer->createCustomer();                
-                require_once "views/company/footer.view.php";
+                $customer->createCustomer();
+                header("Location:?c=Register&a=register");
             }
         }
     }

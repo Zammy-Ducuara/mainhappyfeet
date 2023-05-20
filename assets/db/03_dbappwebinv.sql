@@ -105,7 +105,7 @@ CREATE TABLE PRODUCTS (
 -- TABLA CUSTOMERS
 -- -----------------------------------------------------
 CREATE TABLE CUSTOMERS (
-  customer_code VARCHAR(10) NOT NULL,
+  customer_code VARCHAR(100) NOT NULL,
   customer_birthdate DATE NOT NULL,
   PRIMARY KEY (customer_code),
   INDEX ind_cliente_credencial (customer_code ASC),  
@@ -120,7 +120,7 @@ CREATE TABLE CUSTOMERS (
 -- TABLA ORDERS
 -- -----------------------------------------------------
 CREATE TABLE ORDERS (
-  customer_code VARCHAR(10) NOT NULL,
+  customer_code VARCHAR(100) NOT NULL,
   order_code VARCHAR(10) NOT NULL,
   order_date DATE NOT NULL,
   order_city VARCHAR(50) NOT NULL,
@@ -163,7 +163,7 @@ CREATE TABLE LIST_PRODUCTS_ORDERS (
 -- TABLA EMPLOYEES
 -- -----------------------------------------------------
 CREATE TABLE EMPLOYEES (
-  employee_code VARCHAR(10) NOT NULL,
+  employee_code VARCHAR(100) NOT NULL,
   employee_salary DECIMAL(8,2) NOT NULL,
   PRIMARY KEY (employee_code),
   INDEX ind_vendedor_credencial (employee_code ASC),
@@ -178,7 +178,7 @@ CREATE TABLE EMPLOYEES (
 -- TABLA SELLERS_ORDERS
 -- -----------------------------------------------------
 CREATE TABLE SELLERS_ORDERS (
-  seller_code VARCHAR(10) NOT NULL,
+  seller_code VARCHAR(100) NOT NULL,
   order_code VARCHAR(10) NOT NULL,
   INDEX ind_sellerorder_employee (seller_code ASC),
   INDEX ind_sellerorder_order (order_code ASC),

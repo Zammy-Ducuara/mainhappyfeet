@@ -1,5 +1,5 @@
 <section class="borde formulario">
-    <form action="" method="" class="borde">
+    <form action="" method="post" class="borde">
         <div class="borde form-header">
             <h2>Recuperar Contraseña</h2>
         </div>

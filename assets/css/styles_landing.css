@@ -152,7 +152,7 @@ form{
     align-items: flex-start;
 }
 .form-control textarea{
-    height: 200px;
+    height: 100px;
     resize: none;
 }
 .form-footer{

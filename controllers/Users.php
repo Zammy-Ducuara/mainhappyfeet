@@ -1,5 +1,6 @@
 <?php    
     require_once "models/Employee.php";
+    require_once "models/Customer.php";
     class Users{
         public function __construct(){}
         public function main(){
@@ -64,15 +65,75 @@
         }
         # CU011 - Crear Cliente
         public function createCustomer(){
-            require_once "views/roles/admin/header.view.php";
-            require_once "views/modules/01_users/create_customer.view.php";
-            require_once "views/roles/admin/footer.view.php";
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $userCode = new User();                
+                require_once "views/roles/admin/header.view.php";
+                require_once "views/modules/01_users/create_customer.view.php";
+                require_once "views/roles/admin/footer.view.php";
+            }
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {                
+                $userCode = new User;
+                $userCode = $userCode->createUserCode();
+                $user = new User(
+                    null,
+                    $userCode,
+                    $_POST["userName"],
+                    $_POST["userLastName"],
+                    $_POST["userEmail"]
+                );
+                $credential = new Credential(
+                    $userCode,
+                    $_POST["credentialPhoto"],
+                    $_POST["credentialId"],
+                    null,
+                    $_POST["credentialPass"],
+                    $_POST["credentialStatus"]                    
+                );
+                $customer = new Customer(
+                    $userCode,
+                    $_POST["customerBirthDate"],
+                );
+                $user->createUser();                
+                $credential->createCredential();
+                $customer->createCustomer();
+                header("Location:?c=Users&a=readUser");
+            }
         }
         # CU012 - Crear Vendedor
         public function createSeller(){
-            require_once "views/roles/admin/header.view.php";
-            require_once "views/modules/01_users/create_seller.view.php";
-            require_once "views/roles/admin/footer.view.php";
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $userCode = new User();                
+                require_once "views/roles/admin/header.view.php";
+                require_once "views/modules/01_users/create_seller.view.php";
+                require_once "views/roles/admin/footer.view.php";
+            }
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {                
+                $userCode = new User;
+                $userCode = $userCode->createUserCode();
+                $user = new User(
+                    null,
+                    $userCode,
+                    $_POST["userName"],
+                    $_POST["userLastName"],
+                    $_POST["userEmail"]
+                );
+                $credential = new Credential(
+                    $userCode,
+                    $_POST["credentialPhoto"],
+                    $_POST["credentialId"],
+                    null,
+                    $_POST["credentialPass"],
+                    $_POST["credentialStatus"]                    
+                );
+                $seller = new Employee(
+                    $userCode,
+                    $_POST["employeeSalary"],
+                );
+                $user->createUser();                
+                $credential->createCredential();
+                $seller->createEmployee();
+                header("Location:?c=Users&a=readUser");
+            }
         }
         # CU13 - Consultar Usuarios
         public function readUser(){

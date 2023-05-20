@@ -1,5 +1,6 @@
 <?php    
     require_once "models/Credential.php";    
+    require_once "models/Customer.php";    
     class Register{
         public function __construct(){}
         public function main(){
@@ -30,8 +31,13 @@
                     $_POST["credentialPass"],
                     false
                 );
+                $customer = new Customer(
+                    $userCode,
+                    null,
+                );
                 $user->createUser();                
                 $credential->createCredential();
+                $customer->createCustomer();                
                 header("Location:?c=Register&a=register");
             }
         }

@@ -186,16 +186,16 @@
             try {
                 $userCreate = $_GET["a"];
                 if ($userCreate == "createMessageUser" OR $userCreate == "createUser" ) {
-                    $userType = "users";
+                    $userType = "user";
                     $userRol = 2;
                 } elseif ($userCreate == "createAdmin") {
                     $userType = "admin";
                     $userRol = 1;
                 } elseif ($userCreate == "createCustomer" OR $userCreate == "register") {
-                    $userType = "custr";
+                    $userType = "customer";
                     $userRol = 3;
                 } elseif ($userCreate == "createSeller") {
-                    $userType = "sellr";
+                    $userType = "seller";
                     $userRol = 4;
                 }
                 $sql = "SELECT * FROM USERS WHERE rol_code = $userRol 

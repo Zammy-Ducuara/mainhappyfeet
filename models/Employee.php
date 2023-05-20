@@ -2,8 +2,8 @@
     require_once "models/Credential.php";
     class Employee extends Credential{
         private $dbh;        
-        protected $employeeCode;
-        protected $employeeSalary;
+        private $employeeCode;
+        private $employeeSalary;
         public function __construct(){
             try {
                 $this->dbh = DataBase::connection();

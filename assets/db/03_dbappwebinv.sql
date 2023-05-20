@@ -106,7 +106,7 @@ CREATE TABLE PRODUCTS (
 -- -----------------------------------------------------
 CREATE TABLE CUSTOMERS (
   customer_code VARCHAR(100) NOT NULL,
-  customer_birthdate DATE NOT NULL,
+  customer_birthdate DATE,
   PRIMARY KEY (customer_code),
   INDEX ind_cliente_credencial (customer_code ASC),  
   CONSTRAINT fk_cliente_credencial

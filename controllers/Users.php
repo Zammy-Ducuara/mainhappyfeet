@@ -36,26 +36,27 @@
                 require_once "views/modules/01_users/create_admin.view.php";
                 require_once "views/roles/admin/footer.view.php";
             }
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                require_once "views/roles/admin/header.view.php";
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {                
                 $userCode = new User;
                 $userCode = $userCode->createUserCode();
-                $userAdmin = new Employee(
-                    1,
+                $user = new User(
+                    null,
                     $userCode,
-                    "Juan",
-                    "Sin Miedo",
-                    "juan@sinmiedo.com",
-                    null,
-                    null,
-                    date('Y-m-d'),
-                    sha1("12345"),
-                    false,
-                    1500000
+                    $_POST["userName"],
+                    $_POST["userLastName"],
+                    $_POST["userEmail"]
                 );
-                print_r($userAdmin);
-                require_once "views/roles/admin/footer.view.php";
-                // header("Location:?c=Users&a=readUser");
+                $admin = new Credential(
+                    $userCode,
+                    null,
+                    null,
+                    null,
+                    $_POST["credentialPass"],
+                    false
+                );
+                $user->createUser();                
+                $admin->createCredential();
+                header("Location:?c=Users&a=readUser");                
             }
         }
         # CU011 - Crear Cliente

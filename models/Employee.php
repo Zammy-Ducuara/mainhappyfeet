@@ -14,17 +14,7 @@
                 die($e->getMessage());
             }
         }
-        public function __construct11($rolCode,$userCode,$userName,$userLastName,$userEmail,$credentialPhoto,$credentialId,$credentialStartDate,$credentialPass,$credentialStatus,$employeeSalary){
-            $this->rolCode = $rolCode;            
-            $this->userCode = $userCode;
-            $this->userName = $userName;
-            $this->userLastName = $userLastName;
-            $this->userEmail = $userEmail;            
-            $this->credentialPhoto = $credentialPhoto;
-            $this->credentialId = $credentialId;
-            $this->credentialStartDate = $credentialStartDate;
-            $this->credentialPass = $credentialPass;
-            $this->credentialStatus = $credentialStatus;
+        public function __construct11($employeeSalary){            
             $this->employeeSalary = $employeeSalary;
         }
         # Salario Empleado (Vendedor o Administrador)

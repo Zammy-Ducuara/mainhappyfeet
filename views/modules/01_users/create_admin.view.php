@@ -53,8 +53,8 @@
         <div class="form-control">
             <label for="">Estado</label>
             <select name="credentialStatus">
-                <option value="false">Inactivo</option>
-                <option value="true">Activo</option>
+                <option value="0">Inactivo</option>
+                <option value="1">Activo</option>
             </select>
         </div>
     </div>

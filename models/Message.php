@@ -77,7 +77,7 @@
                         )';
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->bindValue('userCode', $this->getUserCode());
-                $stmt->bindValue('MessageDate', date('Y-m-d'));
+                $stmt->bindValue('MessageDate', $this->getMessageDate());
                 $stmt->bindValue('MessageTo', $this->getMessageTo());
                 $stmt->bindValue('MessageSubject', $this->getMessageSubject());
                 $stmt->bindValue('MessageDescription', $this->getMessageDescription());

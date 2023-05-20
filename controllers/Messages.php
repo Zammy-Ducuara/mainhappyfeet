@@ -18,7 +18,7 @@
                     $_POST['userName'],
                     $_POST['userLastName'],
                     $_POST['userEmail'],
-                    null,
+                    date('Y-m-d'),
                     "profealbeiro2020@gmail.com",
                     $_POST['messageSubject'],
                     $_POST['messageDescription']

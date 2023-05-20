@@ -104,7 +104,7 @@
                 $stmt->bindValue('credentialCode', $this->getCredentialCode());
                 $stmt->bindValue('credentialPhoto', $this->getCredentialPhoto()); 
                 $stmt->bindValue('credentialId', $this->getCredentialId());                
-                $stmt->bindValue('credentialStartDate', date('Y-m-d'));                
+                $stmt->bindValue('credentialStartDate', $this->getCredentialStartDate());                
                 $stmt->bindValue('credentialPass', sha1($this->getCredentialPass()));
                 $stmt->bindValue('credentialStatus', (bool)$this->getCredentialStatus());
                 $stmt->execute();                

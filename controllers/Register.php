@@ -25,9 +25,9 @@
                 );
                 $credential = new Credential(
                     $userCode,
+                    "",
                     null,
-                    null,
-                    null,
+                    date('Y-m-d'),
                     $_POST["credentialPass"],
                     false
                 );

@@ -49,7 +49,7 @@
                     $userCode,
                     $_POST["credentialPhoto"],
                     $_POST["credentialId"],
-                    null,
+                    $_POST["credentialStartDate"],                    
                     $_POST["credentialPass"],
                     $_POST["credentialStatus"]                    
                 );
@@ -85,7 +85,7 @@
                     $userCode,
                     $_POST["credentialPhoto"],
                     $_POST["credentialId"],
-                    null,
+                    $_POST["credentialStartDate"],                    
                     $_POST["credentialPass"],
                     $_POST["credentialStatus"]                    
                 );
@@ -121,7 +121,7 @@
                     $userCode,
                     $_POST["credentialPhoto"],
                     $_POST["credentialId"],
-                    null,
+                    $_POST["credentialStartDate"],                    
                     $_POST["credentialPass"],
                     $_POST["credentialStatus"]                    
                 );

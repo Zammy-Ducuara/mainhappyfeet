@@ -164,7 +164,7 @@ CREATE TABLE LIST_PRODUCTS_ORDERS (
 -- -----------------------------------------------------
 CREATE TABLE EMPLOYEES (
   employee_code VARCHAR(100) NOT NULL,
-  employee_salary DECIMAL(8,2) NOT NULL,
+  employee_salary DECIMAL(15,2) NOT NULL,
   PRIMARY KEY (employee_code),
   INDEX ind_vendedor_credencial (employee_code ASC),
   CONSTRAINT fk_vendedor_credencial

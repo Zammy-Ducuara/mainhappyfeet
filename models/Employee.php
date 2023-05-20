@@ -1,6 +1,8 @@
 <?php
+    require_once "models/Credential.php";
     class Employee extends Credential{
         private $dbh;        
+        protected $employeeCode;
         protected $employeeSalary;
         public function __construct(){
             try {
@@ -14,8 +16,16 @@
                 die($e->getMessage());
             }
         }
-        public function __construct11($employeeSalary){            
+        public function __construct2($employeeCode,$employeeSalary){            
+            $this->employeeCode = $employeeCode;
             $this->employeeSalary = $employeeSalary;
+        }
+        # Código de Empleado
+        public function setEmployeeCode($employeeCode){
+            $this->employeeCode = $employeeCode;
+        }
+        public function getEmployeeCode(){
+            return $this->employeeCode;
         }
         # Salario Empleado (Vendedor o Administrador)
         public function setEmployeeSalary($employeeSalary){
@@ -26,7 +36,18 @@
         }        
         # CU012 - Crear Empleado (Vendedor o Administrador)
         public function createEmployee(){
-            
+            try {
+                $sql = "INSERT INTO EMPLOYEES VALUES (
+                    :employeeCode,
+                    :employeeSalary
+                )";                
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->bindValue('employeeCode', $this->getEmployeeCode());                
+                $stmt->bindValue('employeeSalary', $this->getEmployeeSalary());
+                $stmt->execute();                
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
         }
         # CU# - Generar reporte impreso de usuarios
         public function printedUserReport(){}

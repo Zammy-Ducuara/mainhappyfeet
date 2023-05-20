@@ -1,6 +1,4 @@
-<?php
-    require_once "models/User.php";
-    require_once "models/Credential.php";
+<?php    
     require_once "models/Employee.php";
     class Users{
         public function __construct(){}
@@ -46,17 +44,22 @@
                     $_POST["userLastName"],
                     $_POST["userEmail"]
                 );
-                $admin = new Credential(
+                $credential = new Credential(
                     $userCode,
-                    null,
-                    null,
+                    $_POST["credentialPhoto"],
+                    $_POST["credentialId"],
                     null,
                     $_POST["credentialPass"],
-                    false
+                    $_POST["credentialStatus"]                    
+                );
+                $admin = new Employee(
+                    $userCode,
+                    $_POST["employeeSalary"],
                 );
                 $user->createUser();                
-                $admin->createCredential();
-                header("Location:?c=Users&a=readUser");                
+                $credential->createCredential();
+                $admin->createEmployee();
+                header("Location:?c=Users&a=readUser");
             }
         }
         # CU011 - Crear Cliente

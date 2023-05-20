@@ -10,8 +10,7 @@
     </div>
     <div class="borde form-body">
         <div class="form-control">
-            <label for="">Código Usuario</label>
-            <input type="hidden" name="userCode" value="<?php echo $userCode->createUserCode() ?>">
+            <label for="">Código Usuario</label>            
             <input type="text" name="userCode" value="<?php echo $userCode->createUserCode() ?>" disabled>
         </div>
         <div class="form-control">
@@ -40,7 +39,7 @@
         </div>
         <div class="form-control">
             <label for="">Salario</label>
-            <input type="number" placeholder="Salario en pesos">
+            <input type="number" name="employeeSalary" placeholder="Salario en pesos">
         </div>
         <div class="form-control">
             <label for="">Contraseña</label>

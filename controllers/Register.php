@@ -22,7 +22,7 @@
                     $_POST["userLastName"],
                     $_POST["userEmail"]
                 );
-                $customer = new Credential(
+                $credential = new Credential(
                     $userCode,
                     null,
                     null,
@@ -31,7 +31,7 @@
                     false
                 );
                 $user->createUser();                
-                $customer->createCredential();
+                $credential->createCredential();
                 header("Location:?c=Register&a=register");
             }
         }

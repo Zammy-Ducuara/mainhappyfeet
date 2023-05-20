@@ -47,7 +47,7 @@
             $this->credentialPass = $credentialPass;
             $this->credentialStatus = $credentialStatus;
         }
-        # Foto de Credencial
+        # Código de Credencial
         public function setCredentialCode($credentialCode){
             $this->credentialCode = $credentialCode;
         }
@@ -106,7 +106,7 @@
                 $stmt->bindValue('credentialId', $this->getCredentialId());                
                 $stmt->bindValue('credentialStartDate', date('Y-m-d'));                
                 $stmt->bindValue('credentialPass', sha1($this->getCredentialPass()));
-                $stmt->bindValue('credentialStatus', $this->getCredentialStatus());
+                $stmt->bindValue('credentialStatus', (bool)$this->getCredentialStatus());
                 $stmt->execute();                
             } catch (Exception $e) {
                 die($e->getMessage());

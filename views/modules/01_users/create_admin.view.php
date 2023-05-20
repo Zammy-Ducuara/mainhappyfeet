@@ -4,14 +4,15 @@
     <a href="?c=Users&a=createSeller" class="borde">Crear Vendedor</a>
     <a href="?c=Users&a=readUser" class="borde">Consultar Usuarios</a>
 </div>
-<form action="" method="" class="borde">
+<form action="" method="post" class="borde">
     <div class="borde form-header">
         <h2>Crear Administrador</h2>
     </div>
     <div class="borde form-body">
         <div class="form-control">
             <label for="">Código Usuario</label>
-            <input type="text" disabled>
+            <input type="hidden" name="userCode" value="<?php echo $userCode ?>">
+            <input type="text" name="userCode" value="<?php echo $userCode ?>" disabled>
         </div>
         <div class="form-control">
             <label for="">Foto</label>
@@ -43,22 +44,22 @@
         </div>
         <div class="form-control">
             <label for="">Contraseña</label>
-            <input type="text" placeholder="Contraseña">
+            <input type="password" placeholder="Contraseña">
         </div>
         <div class="form-control">
             <label for="">Confirmación</label>
-            <input type="text" placeholder="Confirmación de Contraseña">
+            <input type="password" placeholder="Confirmación de Contraseña">
         </div>
         <div class="form-control">
             <label for="">Estado</label>
             <select>
-                <option value="0" class="option">Inactivo</option>
-                <option value="1">Activo</option>
+                <option value="false">Inactivo</option>
+                <option value="true">Activo</option>
             </select>
         </div>
     </div>
     <div class="borde form-footer">
-        <a href="?" class="borde">Cancelar</a>
-        <input type="submit" value="Crear" class="borde">
+        <a href="?c=Users&a=createAdmin" class="borde">Cancelar</a>
+        <input type="submit" value="Enviar" class="borde">
     </div>
 </form>

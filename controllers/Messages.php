@@ -37,6 +37,7 @@
                 require_once "views/roles/admin/footer.view.php";
             }
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                
                 header("Location:?c=Messages&a=readMessage");
             }
         }

@@ -30,9 +30,16 @@
         }
         # CU10 - Crear Administrador
         public function createAdmin(){
-            require_once "views/roles/admin/header.view.php";
-            require_once "views/modules/01_users/create_admin.view.php";
-            require_once "views/roles/admin/footer.view.php";
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $userCode = new User();
+                $userCode = $userCode->createUserCode();                
+                require_once "views/roles/admin/header.view.php";
+                require_once "views/modules/01_users/create_admin.view.php";
+                require_once "views/roles/admin/footer.view.php";
+            }
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                header("Location:?c=Users&a=readUser");
+            }
         }
         # CU011 - Crear Cliente
         public function createCustomer(){

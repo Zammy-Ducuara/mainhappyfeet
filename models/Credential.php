@@ -89,7 +89,12 @@
         public function getCredentialStatus(){
             return $this->credentialStatus;
         }
-        # CU011 - Crear Credencial
+
+/*  ---------------------------------------------------------------------------  */
+/*  ------------------------- CASOS DE USO CREDENCIAL -------------------------  */
+/*  ---------------------------------------------------------------------------  */
+
+        # CU012 - Crear Credencial
         public function createCredential(){
             try {
                 $sql = "INSERT INTO CREDENTIALS VALUES (
@@ -111,7 +116,7 @@
             } catch (Exception $e) {
                 die($e->getMessage());
             }
-        } 
+        }       
         # CU01 - Iniciar Sesión
         public function login(){}
         # CU03 - Cerrar Sesión

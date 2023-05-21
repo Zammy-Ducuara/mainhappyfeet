@@ -33,7 +33,12 @@
         public function getCustomerBirthDate(){
             return $this->customerBirthDate;
         }
-        # CU012 - Crear Cliente
+
+/*  ---------------------------------------------------------------------------  */
+/*  -------------------------- CASOS DE USO EMPLEADO --------------------------  */
+/*  ---------------------------------------------------------------------------  */
+        
+        # CU014 - Crear Cliente o Registrarse (cliente)
         public function createCustomer(){
             try {
                 $sql = "INSERT INTO CUSTOMERS VALUES (
@@ -48,5 +53,7 @@
                 die($e->getMessage());
             }
         }
+        # CU014 - Consultar Clientes
+        public function readCustomer(){}
     }
 ?>

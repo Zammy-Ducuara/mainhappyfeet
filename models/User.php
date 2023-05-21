@@ -39,12 +39,28 @@
             $this->userLastName = $userLastName;
             $this->userEmail = $userEmail;
         }
-        public function __construct8($userCode,$userName,$userLastName,$userEmail,$messageDate, $messageTo,$messageSubject,$messageDescription){            
+        public function __construct8($userCode,$userName,$userLastName,$userEmail,$messageDate,$messageTo,$messageSubject,$messageDescription){            
             $this->userCode = $userCode;
             $this->userName = $userName;
             $this->userLastName = $userLastName;
             $this->userEmail = $userEmail;
             $this->message = new Message($userCode, $messageDate, $messageTo, $messageSubject, $messageDescription);
+        }
+        # Mensaje del Usuario        
+        public function getMessageDate(){
+            return $this->message->getMessageDate();
+        }
+        public function getMessageTo(){
+            return $this->message->getMessageTo();
+        }
+        public function getMessageSubject(){
+            return $this->message->getMessageSubject();
+        }
+        public function getMessageDescription(){
+            return $this->message->getMessageDescription();
+        }
+        public function sendMessageUser(){
+            $this->message->createMessageUser();
         }       
         # Código del Rol
         public function setRolCode($rolCode){
@@ -87,29 +103,13 @@
         }
         public function getUserEmail(){
             return $this->userEmail;
-        }
-        # Mensaje del Usuario        
-        public function getMessageDate(){
-            return $this->message->getMessageDate();
-        }
-        public function getMessageTo(){
-            return $this->message->getMessageTo();
-        }
-        public function getMessageSubject(){
-            return $this->message->getMessageSubject();
-        }
-        public function getMessageDescription(){
-            return $this->message->getMessageDescription();
-        }
-        public function sendMessageUser(){
-            $this->message->createMessageUser();
-        }
+        }        
 
 /*  ---------------------------------------------------------------------------  */
-/*  ------------------------------- CASOS DE USO ------------------------------  */
+/*  -------------------------- CASOS DE USO USUARIO ---------------------------  */
 /*  ---------------------------------------------------------------------------  */
         
-        # CU04 - Crear Rol
+        # CU01 - Crear Rol
         public function createRol(){
             try {                
                 $sql = 'INSERT INTO ROLES VALUES (:rolCode,:rolName)';                
@@ -121,7 +121,7 @@
                 die($e->getMessage());
             }
         }
-        # CU05 - Consultar Roles
+        # CU02 - Consultar Roles
         public function readRol(){
             try {
                 $rolList = [];
@@ -137,8 +137,8 @@
             } catch (Exception $e) {
                 die($e->getMessage());
             }
-        }
-        # CU06_01 - Obtener el código del Rol
+        }        
+        # CU03 - Obtener el código del Rol
         public function getRolByCode($rolCode){
             try {
                 $sql = "SELECT * FROM ROLES WHERE rol_code=:rolCode";
@@ -155,7 +155,7 @@
                 die($e->getMessage());
             }
         }
-        # CU06 - Actualizar Rol
+        # CU04 - Actualizar Rol
         public function updateRol(){
             try {                
                 $sql = 'UPDATE ROLES SET
@@ -169,8 +169,8 @@
             } catch (Exception $e) {
                 die($e->getMessage());
             }
-        }
-        # CU07 - Eliminar Rol
+        }        
+        # CU05 - Eliminar Rol
         public function deleteRol($rolCode){
             try {
                 $sql = 'DELETE FROM ROLES WHERE rol_code = :rolCode';
@@ -181,7 +181,7 @@
                 die($e->getMessage());
             }            
         }
-        # CU09_01 - Crear el consecutivo de usuario
+        # CU06 - Crear código de usuario
         public function createUserCode(){
             try {
                 $userCreate = $_GET["a"];
@@ -224,8 +224,8 @@
             } catch (Exception $e) {
                 die($e->getMessage());
             }
-        }         
-        # CU09 - Crear Usuario
+        }
+        # CU07 - Crear Usuario
         public function createUser(){
             try {
                 $userCreate = $_GET["a"];
@@ -256,7 +256,7 @@
                 die($e->getMessage());
             }
         }
-        # CU13 - Consultar Usuarios
+        # CU16 - Consultar Usuarios
         public function readUser(){
             try {
                 $userList = [];
@@ -276,7 +276,7 @@
                 die($e->getMessage());
             }
         }
-        # CU014_01 - Obtener el código del Usuario
+        # CU18 - Obtener el código del Usuario
         public function getUserByCode($userCode){
             try {
                 $sql = "SELECT * FROM USERS WHERE user_code=:userCode";
@@ -296,7 +296,7 @@
                 die($e->getMessage());
             }
         }
-        # CU14 - Actualizar Usuario
+        # CU19 - Actualizar Usuario
         public function updateUser(){
             try {
                 $sql = 'UPDATE USERS SET                                
@@ -314,7 +314,7 @@
                 die($e->getMessage());
             }
         }
-        # CU16 - Eliminar Usuario
+        # CU19 - Eliminar Usuario
         public function deleteUser($userCode){
             try {
                 $sql = 'DELETE FROM USERS WHERE user_code = :userCode';
@@ -324,6 +324,6 @@
             } catch (Exception $e) {
                 die($e->getMessage());
             }
-        }        
+        }
     }
 ?>

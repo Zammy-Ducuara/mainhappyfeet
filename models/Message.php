@@ -65,8 +65,8 @@
 /*  ------------------------------- CASOS DE USO ------------------------------  */
 /*  ---------------------------------------------------------------------------  */
 
-        # CU017 - Crear Mensaje Usuario
-        public function createMessageUser(){
+        # CU099 - Crear Mensaje Usuario
+        public function createMessage(){
             try {
                 $sql = 'INSERT INTO MESSAGES VALUES (
                             :userCode,
@@ -86,10 +86,6 @@
                 die($e->getMessage());
             }
         }
-        # CU018 - Crear Mensaje
-        public function createMessage(){}
-        # CU19 - Consultar mis Mensajes
-        public function readMessageProfile(){}
         # CU20 - Consultar Mensajes
         public function readMessage(){
             try {

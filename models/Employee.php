@@ -33,8 +33,13 @@
         }
         public function getEmployeeSalary(){
             return $this->employeeSalary;
-        }        
-        # CU012 - Crear Empleado (Vendedor o Administrador)
+        }
+
+/*  ---------------------------------------------------------------------------  */
+/*  -------------------------- CASOS DE USO EMPLEADO --------------------------  */
+/*  ---------------------------------------------------------------------------  */
+
+        # CU013 - Crear Empleado (Vendedor o Administrador)
         public function createEmployee(){
             try {
                 $sql = "INSERT INTO EMPLOYEES VALUES (

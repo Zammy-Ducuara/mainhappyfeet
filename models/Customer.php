@@ -53,7 +53,17 @@
                 die($e->getMessage());
             }
         }
-        # CU014 - Consultar Clientes
+        # CU016 - Consultar Clientes
         public function readCustomer(){}
+        # CU020 - Obtener código del cliente
+        public function getCustomerByCode(){}
+        # CU021 - Actualizar cliente
+        public function updateCustomer(){}
+        # CU025 - Editar perfil del cliente
+        public function editProfileCustomer(){}
+        # CU# - Generar reporte impreso de clientes
+        public function printedEmployeeReport(){}
+        # CU# - Generar reporte gráfico de clientes
+        public function graphicEmployeeReport(){}
     }
 ?>

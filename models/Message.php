@@ -65,8 +65,8 @@
 /*  ----------------------------- CASOS DE MENSAJES ---------------------------  */
 /*  ---------------------------------------------------------------------------  */
 
-        # CU099 - Crear Mensaje Usuario
-        public function createMessage(){
+        # CU0## - Crear Mensaje Usuario
+        public function createMessageUser(){
             try {
                 $sql = 'INSERT INTO MESSAGES VALUES (
                             :userCode,
@@ -86,7 +86,30 @@
                 die($e->getMessage());
             }
         }
-        # CU20 - Consultar Mensajes
+        # CU0## - Crear Mensaje
+        public function createMessage(){
+            try {
+                $sql = 'INSERT INTO MESSAGES VALUES (
+                            :userCode,
+                            :MessageDate,
+                            :MessageTo,
+                            :MessageSubject,
+                            :MessageDescription
+                        )';
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->bindValue('userCode', $this->getUserCode());
+                $stmt->bindValue('MessageDate', $this->getMessageDate());
+                $stmt->bindValue('MessageTo', $this->getMessageTo());
+                $stmt->bindValue('MessageSubject', $this->getMessageSubject());
+                $stmt->bindValue('MessageDescription', $this->getMessageDescription());
+                $stmt->execute();
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        }        
+        # CU20 - Consultar Mensajes Usuario
+        public function readMessageProfile(){}
+        # CU## - Consultar Mensajes
         public function readMessage(){
             try {
                 $messageList = [];
@@ -109,7 +132,7 @@
                 die($e->getMessage());
             }
         }
-        # CU21 - Eliminar Mensaje
+        # CU## - Eliminar Mensaje
         public function deleteMessage($userCode){
              try {
                 $sql = 'DELETE FROM MESSAGES WHERE user_code = :userCode';
@@ -120,5 +143,9 @@
                 die($e->getMessage());
             }
         }
+        # CU# - Generar reporte impreso de mensajes
+        public function printedMessageReport(){}
+        # CU# - Generar reporte gráfico de mensajes
+        public function graphicMessageReport(){}
     }
 ?>

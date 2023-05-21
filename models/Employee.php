@@ -62,9 +62,9 @@
         public function updateEmployee(){}
         # CU24 - Editar perfil del empleado
         public function editProfileEmployee(){}
-        # CU# - Generar reporte impreso de usuarios
+        # CU# - Generar reporte impreso de empleados
         public function printedEmployeeReport(){}
-        # CU# - Generar reporte gráfico de usuarios
+        # CU# - Generar reporte gráfico de empleados
         public function graphicEmployeeReport(){}
     }
 ?>

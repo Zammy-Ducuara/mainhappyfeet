@@ -54,9 +54,17 @@
                 die($e->getMessage());
             }
         }
+        # CU17 - Consultar empleados
+        public function readEmployee(){}
+        # CU22 - Obtener código del empleado
+        public function getEmployeeByCode(){}
+        # CU23 - Actualizar empleado
+        public function updateEmployee(){}
+        # CU24 - Editar perfil del empleado
+        public function editProfileEmployee(){}
         # CU# - Generar reporte impreso de usuarios
-        public function printedUserReport(){}
+        public function printedEmployeeReport(){}
         # CU# - Generar reporte gráfico de usuarios
-        public function graphicUserReport(){}
+        public function graphicEmployeeReport(){}
     }
 ?>

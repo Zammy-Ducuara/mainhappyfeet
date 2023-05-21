@@ -119,13 +119,9 @@
         }       
         # CU01 - Iniciar Sesión
         public function login(){}
-        # CU03 - Cerrar Sesión
-        public function logout(){}
         # CU02 - Recuperar Contraseña
         public function forgotLogin(){}
-        # CU08 - Registrarse
-        public function register(){}
-        # CU15 - Editar Perfil
-        public function editProfile(){}        
+        # CU03 - Cerrar Sesión
+        public function logout(){}        
     }
 ?>

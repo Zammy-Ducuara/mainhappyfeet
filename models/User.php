@@ -109,7 +109,7 @@
 /*  -------------------------- CASOS DE USO USUARIO ---------------------------  */
 /*  ---------------------------------------------------------------------------  */
         
-        # CU01 - Crear Rol
+        # CU04 - Crear Rol
         public function createRol(){
             try {                
                 $sql = 'INSERT INTO ROLES VALUES (:rolCode,:rolName)';                
@@ -121,7 +121,7 @@
                 die($e->getMessage());
             }
         }
-        # CU02 - Consultar Roles
+        # CU05 - Consultar Roles
         public function readRol(){
             try {
                 $rolList = [];
@@ -138,7 +138,7 @@
                 die($e->getMessage());
             }
         }        
-        # CU03 - Obtener el código del Rol
+        # CU06 - Obtener el código del Rol
         public function getRolByCode($rolCode){
             try {
                 $sql = "SELECT * FROM ROLES WHERE rol_code=:rolCode";
@@ -155,7 +155,7 @@
                 die($e->getMessage());
             }
         }
-        # CU04 - Actualizar Rol
+        # CU07 - Actualizar Rol
         public function updateRol(){
             try {                
                 $sql = 'UPDATE ROLES SET
@@ -170,7 +170,7 @@
                 die($e->getMessage());
             }
         }        
-        # CU05 - Eliminar Rol
+        # CU08 - Eliminar Rol
         public function deleteRol($rolCode){
             try {
                 $sql = 'DELETE FROM ROLES WHERE rol_code = :rolCode';
@@ -181,7 +181,7 @@
                 die($e->getMessage());
             }            
         }
-        # CU06 - Crear código de usuario
+        # CU09 - Crear código de usuario
         public function createUserCode(){
             try {
                 $userCreate = $_GET["a"];
@@ -225,7 +225,7 @@
                 die($e->getMessage());
             }
         }
-        # CU07 - Crear Usuario
+        # CU10 - Crear Usuario
         public function createUser(){
             try {
                 $userCreate = $_GET["a"];
@@ -256,7 +256,7 @@
                 die($e->getMessage());
             }
         }
-        # CU16 - Consultar Usuarios
+        # CU15 - Consultar Usuarios
         public function readUser(){
             try {
                 $userList = [];
@@ -314,7 +314,7 @@
                 die($e->getMessage());
             }
         }
-        # CU19 - Eliminar Usuario
+        # CU25 - Eliminar Usuario
         public function deleteUser($userCode){
             try {
                 $sql = 'DELETE FROM USERS WHERE user_code = :userCode';

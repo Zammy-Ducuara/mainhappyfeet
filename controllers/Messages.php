@@ -23,6 +23,7 @@
                     $_POST['messageSubject'],
                     $_POST['messageDescription']
                 );
+                print_r($messageUser);
                 $messageUser->createUser();
                 $messageUser->sendMessageUser();
                 header("Location:?c=Messages&a=createMessageUser");
@@ -36,7 +37,6 @@
                 require_once "views/roles/admin/footer.view.php";
             }
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                
                 header("Location:?c=Messages&a=readMessage");
             }
         }

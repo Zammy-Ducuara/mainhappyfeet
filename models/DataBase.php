@@ -2,7 +2,7 @@
     class DataBase{
         public static function connection(){
             $options = array(
-                PDO::MYSQL_ATTR_SSL_CA => '/var/www/html/DigiCertGlobalRootCA.crt.pem'
+                PDO::MYSQL_ATTR_SSL_CA => 'assets/db/DigiCertGlobalRootCA.crt.pem'
             );
             $hostname = "dbappwebinv.mysql.database.azure.com";
             $port = "3306";

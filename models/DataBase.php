@@ -4,7 +4,7 @@
             $options = array(
                 PDO::MYSQL_ATTR_SSL_CA => '/var/www/html/DigiCertGlobalRootCA.crt.pem'
             );
-            $hostname = "dbappwebinv1.mysql.database.azure.com";
+            $hostname = "dbappwebinv.mysql.database.azure.com";
             $port = "3306";
             $database = "dbappwebinv1";
             $username = "admin_albeiro";

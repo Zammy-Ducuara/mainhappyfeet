@@ -245,7 +245,7 @@ WHERE codigo_user = 'admin-2';
 --      SELECT * FROM __ : ------------------------------------------------------------- --
 -- ------------------------------------------------------------------------------------- --
 SELECT * FROM ROLES;
-SELECT * FROM USUARIOS;
+SELECT * FROM USERS;
 SELECT * FROM CREDENCIALES;
 SELECT * FROM MENSAJES;
 SELECT * FROM VENDEDORES;

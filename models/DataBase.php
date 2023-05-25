@@ -6,7 +6,7 @@
             );
             $hostname = "dbappwebinv.mysql.database.azure.com";
             $port = "3306";
-            $database = "dbappwebinv1";
+            $database = "dbappwebinv";
             $username = "admin_albeiro";
             $password = "Earv1234";
 			$pdo = new PDO("mysql:host=$hostname;port=$port;dbname=$database;charset=utf8",$username,$password,$options);

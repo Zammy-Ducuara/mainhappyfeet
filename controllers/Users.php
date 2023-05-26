@@ -6,7 +6,6 @@
         public function main(){
             header("Location:?c=Dashboard");
         }
-        # CU09 - Crear Usuario
         public function createUser(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 require_once "views/roles/admin/header.view.php";
@@ -27,7 +26,6 @@
                 header("Location: ?c=Users&a=readUser");
             }
         }
-        # CU10 - Crear Administrador
         public function createAdmin(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $userCode = new User();                
@@ -63,7 +61,6 @@
                 header("Location:?c=Users&a=readUser");
             }
         }
-        # CU011 - Crear Cliente
         public function createCustomer(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $userCode = new User();                
@@ -99,7 +96,6 @@
                 header("Location:?c=Users&a=readUser");
             }
         }
-        # CU012 - Crear Vendedor
         public function createSeller(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $userCode = new User();                
@@ -135,7 +131,6 @@
                 header("Location:?c=Users&a=readUser");
             }
         }
-        # CU13 - Consultar Usuarios
         public function readUser(){
             $users = new User;
             $users = $users->readUser();
@@ -143,7 +138,6 @@
             require_once "views/modules/01_users/read_user.view.php";
             require_once "views/roles/admin/footer.view.php";
         }
-        # CU14 - Actualizar Usuario
         public function updateUser(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $user = new User;
@@ -164,13 +158,11 @@
                 header('Location: ?c=Users&a=readUser');
             }
         }
-        # CU15 - Editar Perfil
         public function editProfile(){
             require_once "views/roles/admin/header.view.php";
             require_once "views/modules/01_users/edit_profile.view.php";
             require_once "views/roles/admin/footer.view.php";
         }
-        # CU16 - Eliminar Usuario
         public function deleteUser(){
             $user = new User;
             $user->deleteUser($_GET['userCode']);

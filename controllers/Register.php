@@ -6,7 +6,6 @@
         public function main(){
             header("Location:?");
         }
-        # CU08 - Registrarse
         public function register(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 require_once "views/company/header.view.php";            

@@ -2,7 +2,6 @@
     require_once "models/User.php";
     class Roles{
         public function __construct(){}
-        # CU04 - Crear Rol
         public function main(){
             header("Location:?c=Dashboard");
         }
@@ -18,7 +17,6 @@
                 header("Location: ?c=Roles&a=readRol");
             }
         }
-        # CU05 - Consultar Roles
         public function readRol(){
             $roles = new User;
             $roles = $roles->readRol();
@@ -26,7 +24,6 @@
             require_once "views/modules/01_users/read_rol.view.php";
             require_once "views/roles/admin/footer.view.php";
         }
-        # CU06 - Actualizar Rol
         public function updateRol(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $rol = new User;
@@ -44,7 +41,6 @@
                 header('Location: ?c=Roles&a=readRol');
             }
         }
-        # CU07 - Eliminar Rol
         public function deleteRol(){
             $rol = new User;
             $rol->deleteRol($_GET['rolCode']);

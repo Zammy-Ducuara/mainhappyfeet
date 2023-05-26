@@ -51,19 +51,6 @@
             $this->credentialPass = $credentialPass;
             $this->credentialStatus = $credentialStatus;
         }
-        public function __construct11($rolCode,$rolName,$userCode,$userName,$userLastName,$userEmail,$credentialPhoto,$credentialId,$credentialStartDate,$credentialPass,$credentialStatus){
-            $this->rolCode = $rolCode;
-            $this->rolName = $rolName;
-            $this->userCode = $userCode;
-            $this->userName = $userName;
-            $this->userLastName = $userLastName;
-            $this->userEmail = $userEmail;            
-            $this->credentialPhoto = $credentialPhoto;
-            $this->credentialId = $credentialId;
-            $this->credentialStartDate = $credentialStartDate;
-            $this->credentialPass = $credentialPass;
-            $this->credentialStatus = $credentialStatus;
-        }
         # Código de Credencial
         public function setCredentialCode($credentialCode){
             $this->credentialCode = $credentialCode;
@@ -136,38 +123,32 @@
         }       
         # CU01 - Iniciar Sesión
         public function login(){
-            $sql = 'SELECT * FROM USERS INNER JOIN CREDENTIALS 
-                    ON USERS.user_code = CREDENTIALS.credential_code WHERE 
-                    user_email = :userEmail AND
-                    credential_pass = :credentialPass';
+            $sql = 'SELECT * FROM users                    
+                    INNER JOIN credentials 
+                    ON users.user_code = credentials.credential_code
+                    WHERE user_email = :userEmail AND credential_pass = :credentialPass';
             $stmt = $this->dbh->prepare($sql);
             $stmt->bindValue('userEmail', $this->getUserEmail());
             $stmt->bindValue('credentialPass', sha1($this->getCredentialPass()));
             $stmt->execute();
-            $credentialDb = $stmt->fetch();
+            $credentialDb = $stmt->fetch();            
             if ($credentialDb) {
-                return $credentialDb;
+                $credential = new Credential(
+                    $credentialDb['rol_code'],
+                    $credentialDb['user_code'],
+                    $credentialDb['user_name'],
+                    $credentialDb['user_lastname'],
+                    $credentialDb['user_email'],
+                    $credentialDb['credential_photo'],
+                    $credentialDb['credential_id'],
+                    $credentialDb['credential_startdate'],
+                    $credentialDb['credential_pass'],
+                    $credentialDb['credential_status']
+                );
+                return $credential;
             } else {
                 return false;
             }
-            
-            // # Retorna el registro como Objeto, sino Falso
-            // if ($userDb) {					
-            //     # Crear Objeto
-            //     $user = new User(
-            //         $userDb['id_usuario'],
-            //         $userDb['usuario_doc_identidad'],
-            //         $userDb['usuario_correo'],
-            //         $userDb['usuario_nombres'],
-            //         $userDb['usuario_apellidos'],
-            //         $userDb['usuario_pass'],
-            //         $userDb['id_rol'],
-            //         $userDb['usuario_estado']
-            //     );
-            //     return $user;
-            // } else {
-            //     return false;
-            // }
         }
         # CU02 - Recuperar Contraseña
         public function forgotLogin(){}

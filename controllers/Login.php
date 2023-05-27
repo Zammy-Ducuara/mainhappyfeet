@@ -1,5 +1,6 @@
 <?php 
-    require_once "models/Credential.php";
+    require_once "models/Employee.php";
+    require_once "models/Customer.php";
     class Login{
         public function __construct(){}        
         public function main(){
@@ -15,11 +16,22 @@
                 );
                 $credential = $credential->login();
                 if ($credential) {
-                    print_r($credential);
+                    $status = $credential->getCredentialStatus();
+                    $rol = $credential->getRolName();                    
+                    if ($status == 1) {                        
+                        if ($rol == "admin") {
+                            echo "Administrador";                            
+                        } elseif ($rol == "seller") {
+                            echo "Vendedor";
+                        } elseif ($rol == "customer") {
+                            echo "Cliente";
+                        }
+                    } else {
+                        echo "El usuario no está activo";
+                    }
                 } else {
                     echo "No hay registro en DB";
                 }
-                // header("Location: ?c=Dashboard");
             }
         }        
         public function forgotLogin(){

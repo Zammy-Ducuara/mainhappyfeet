@@ -2,6 +2,7 @@
     require_once "models/User.php";
     class Credential extends User{
         private $dbh;       
+        protected $rolName;
         protected $credentialCode;
         protected $credentialPhoto;
         protected $credentialId;
@@ -39,8 +40,8 @@
             $this->credentialPass = $credentialPass;
             $this->credentialStatus = $credentialStatus;
         }
-        public function __construct10($rolCode,$userCode,$userName,$userLastName,$userEmail,$credentialPhoto,$credentialId,$credentialStartDate,$credentialPass,$credentialStatus){
-            $this->rolCode = $rolCode;            
+        public function __construct10($rolName,$userCode,$userName,$userLastName,$userEmail,$credentialPhoto,$credentialId,$credentialStartDate,$credentialPass,$credentialStatus){
+            $this->rolName = $rolName;            
             $this->userCode = $userCode;
             $this->userName = $userName;
             $this->userLastName = $userLastName;
@@ -51,6 +52,13 @@
             $this->credentialPass = $credentialPass;
             $this->credentialStatus = $credentialStatus;
         }
+        # Nombre del rol
+        public function setRolName($rolName){
+            $this->rolName = $rolName;
+        }
+        public function getRolName(){
+            return $this->rolName;
+        }               
         # Código de Credencial
         public function setCredentialCode($credentialCode){
             $this->credentialCode = $credentialCode;
@@ -93,7 +101,7 @@
         public function getCredentialStatus(){
             return $this->credentialStatus;
         }
-
+        
 /*  ---------------------------------------------------------------------------  */
 /*  ------------------------- CASOS DE USO CREDENCIAL -------------------------  */
 /*  ---------------------------------------------------------------------------  */
@@ -123,8 +131,10 @@
         }       
         # CU01 - Iniciar Sesión
         public function login(){
-            $sql = 'SELECT * FROM users                    
-                    INNER JOIN credentials 
+            $sql = 'SELECT * FROM ROLES
+                    INNER JOIN USERS 
+                    ON roles.rol_code = users.rol_code
+                    INNER JOIN CREDENTIALS 
                     ON users.user_code = credentials.credential_code
                     WHERE user_email = :userEmail AND credential_pass = :credentialPass';
             $stmt = $this->dbh->prepare($sql);
@@ -134,7 +144,7 @@
             $credentialDb = $stmt->fetch();            
             if ($credentialDb) {
                 $credential = new Credential(
-                    $credentialDb['rol_code'],
+                    $credentialDb['rol_name'],
                     $credentialDb['user_code'],
                     $credentialDb['user_name'],
                     $credentialDb['user_lastname'],

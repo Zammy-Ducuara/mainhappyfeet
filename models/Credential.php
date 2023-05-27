@@ -1,16 +1,15 @@
 <?php
     require_once "models/User.php";
     class Credential extends User{
-        private $dbh;       
-        protected $rolName;
+        private $dbh;
         protected $credentialCode;
         protected $credentialPhoto;
         protected $credentialId;
         protected $credentialStartDate;
         protected $credentialPass;
         protected $credentialStatus = false;
-        public function __construct(){
-            try {
+        public function __construct(){            
+            try {                
                 $this->dbh = DataBase::connection();
                 $a = func_get_args();
                 $i = func_num_args();
@@ -20,7 +19,7 @@
             } catch (Exception $e) {
                 die($e->getMessage());
             }
-        }
+        }        
         public function __construct2($userEmail,$credentialPass){
             $this->userEmail = $userEmail;
             $this->credentialPass = $credentialPass;            
@@ -30,7 +29,7 @@
             $this->credentialId = $credentialId;
             $this->credentialStartDate = $credentialStartDate;
             $this->credentialPass = $credentialPass;
-            $this->credentialStatus = $credentialStatus;
+            $this->credentialStatus = $credentialStatus;            
         }
         public function __construct6($credentialCode,$credentialPhoto,$credentialId,$credentialStartDate,$credentialPass,$credentialStatus){            
             $this->credentialCode = $credentialCode;
@@ -38,10 +37,11 @@
             $this->credentialId = $credentialId;
             $this->credentialStartDate = $credentialStartDate;
             $this->credentialPass = $credentialPass;
-            $this->credentialStatus = $credentialStatus;
+            $this->credentialStatus = $credentialStatus;            
         }
-        public function __construct10($rolName,$userCode,$userName,$userLastName,$userEmail,$credentialPhoto,$credentialId,$credentialStartDate,$credentialPass,$credentialStatus){
-            $this->rolName = $rolName;            
+        public function __construct10($rolCode,$userCode,$userName,$userLastName,$userEmail,$credentialPhoto,$credentialId,$credentialStartDate,$credentialPass,$credentialStatus){
+            unset($this->dbh);
+            $this->rolCode = $rolCode;            
             $this->userCode = $userCode;
             $this->userName = $userName;
             $this->userLastName = $userLastName;
@@ -50,15 +50,8 @@
             $this->credentialId = $credentialId;
             $this->credentialStartDate = $credentialStartDate;
             $this->credentialPass = $credentialPass;
-            $this->credentialStatus = $credentialStatus;
+            $this->credentialStatus = $credentialStatus;            
         }
-        # Nombre del rol
-        public function setRolName($rolName){
-            $this->rolName = $rolName;
-        }
-        public function getRolName(){
-            return $this->rolName;
-        }               
         # Código de Credencial
         public function setCredentialCode($credentialCode){
             $this->credentialCode = $credentialCode;
@@ -131,9 +124,7 @@
         }       
         # CU01 - Iniciar Sesión
         public function login(){
-            $sql = 'SELECT * FROM ROLES
-                    INNER JOIN USERS 
-                    ON roles.rol_code = users.rol_code
+            $sql = 'SELECT * FROM USERS                     
                     INNER JOIN CREDENTIALS 
                     ON users.user_code = credentials.credential_code
                     WHERE user_email = :userEmail AND credential_pass = :credentialPass';
@@ -141,10 +132,10 @@
             $stmt->bindValue('userEmail', $this->getUserEmail());
             $stmt->bindValue('credentialPass', sha1($this->getCredentialPass()));
             $stmt->execute();
-            $credentialDb = $stmt->fetch();            
+            $credentialDb = $stmt->fetch();
             if ($credentialDb) {
                 $credential = new Credential(
-                    $credentialDb['rol_name'],
+                    $credentialDb['rol_code'],
                     $credentialDb['user_code'],
                     $credentialDb['user_name'],
                     $credentialDb['user_lastname'],

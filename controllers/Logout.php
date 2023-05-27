@@ -1,8 +1,9 @@
-<?php
+<?php session_start();
     class Logout{
         public function __construct(){}
         public function main(){
-            header("Location:?c=Landing");
+            session_destroy();
+            header('Location: ?');
         }
     }
 ?>

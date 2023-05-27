@@ -16,6 +16,19 @@
                 die($e->getMessage());
             }
         }
+        public function __construct11($rolName,$userCode,$userName,$userLastName,$userEmail,$credentialPhoto,$credentialId,$credentialStartDate,$credentialPass,$credentialStatus,$customerBirthDate){
+            $this->rolName = $rolName;            
+            $this->userCode = $userCode;
+            $this->userName = $userName;
+            $this->userLastName = $userLastName;
+            $this->userEmail = $userEmail;            
+            $this->credentialPhoto = $credentialPhoto;
+            $this->credentialId = $credentialId;
+            $this->credentialStartDate = $credentialStartDate;
+            $this->credentialPass = $credentialPass;
+            $this->credentialStatus = $credentialStatus;
+            $this->customerBirthDate = $customerBirthDate;
+        }
         public function __construct2($customerCode,$customerBirthDate){            
             $this->customerCode = $customerCode;
             $this->customerBirthDate = $customerBirthDate;

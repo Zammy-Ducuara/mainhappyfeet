@@ -1,8 +1,11 @@
-<?php 
+<?php session_start(); 
     require_once "models/Employee.php";
     require_once "models/Customer.php";
     class Login{
-        public function __construct(){}        
+        private $session;
+        public function __construct(){
+            $this->session = new Credential;
+        }        
         public function main(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 require_once "views/company/header.view.php";            
@@ -14,23 +17,18 @@
                     $_POST['userEmail'],
                     $_POST['credentialPass']
                 );
-                $credential = $credential->login();
+                $credential = $credential->login();                
                 if ($credential) {
-                    $status = $credential->getCredentialStatus();
-                    $rol = $credential->getRolName();                    
+                    $status = $credential->getCredentialStatus();                    
                     if ($status == 1) {                        
-                        if ($rol == "admin") {
-                            echo "Administrador";                            
-                        } elseif ($rol == "seller") {
-                            echo "Vendedor";
-                        } elseif ($rol == "customer") {
-                            echo "Cliente";
-                        }
+                        $credential = serialize($credential);                        
+                        $_SESSION['profile'] = $credential;
+                        header("Location: ?c=Dashboard");
                     } else {
                         echo "El usuario no está activo";
                     }
                 } else {
-                    echo "No hay registro en DB";
+                    echo "El usuario no está registrado en DB";
                 }
             }
         }        

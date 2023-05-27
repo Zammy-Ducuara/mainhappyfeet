@@ -2,12 +2,17 @@
     require_once "models/Employee.php";
     require_once "models/Customer.php";
     class Users{
-        public function __construct(){}
+        public function __construct(){
+            if (empty($_SESSION['profile'])) {
+                $_SESSION['profile'] = null;
+                $_SESSION['session'] = null;
+            }
+        }
         public function main(){
             header("Location:?c=Dashboard");
         }
         public function createUser(){
-            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {                
                 require_once "views/roles/admin/header.view.php";
                 require_once "views/modules/01_users/create_user.view.php";
                 require_once "views/roles/admin/footer.view.php";

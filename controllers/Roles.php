@@ -1,7 +1,12 @@
 <?php
     require_once "models/User.php";
     class Roles{
-        public function __construct(){}
+        public function __construct(){
+            if (empty($_SESSION['profile'])) {
+                $_SESSION['profile'] = null;
+                $_SESSION['session'] = null;
+            }
+        }
         public function main(){
             header("Location:?c=Dashboard");
         }

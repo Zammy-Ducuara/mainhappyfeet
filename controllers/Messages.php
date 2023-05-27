@@ -4,7 +4,7 @@
     class Messages{        
         public function __construct(){}
         public function createMessageUser(){
-            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {                
                 require_once "views/company/header.view.php";
                 require_once "views/company/contact.view.php";            
                 require_once "views/company/footer.view.php";

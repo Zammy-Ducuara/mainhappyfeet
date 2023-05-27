@@ -7,7 +7,7 @@
             header("Location:?");
         }
         public function register(){
-            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {                
                 require_once "views/company/header.view.php";            
                 require_once "views/company/register.view.php";            
                 require_once "views/company/footer.view.php";

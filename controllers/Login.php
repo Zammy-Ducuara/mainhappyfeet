@@ -3,13 +3,11 @@
     require_once "models/Customer.php";
     class Login{        
         public function __construct(){
-            if (empty($_SESSION['profile'])) {
-                $_SESSION['profile'] = null;
-                $_SESSION['session'] = null;
-            } else {
+            if (!empty($_SESSION['profile'])) {
                 header("Location:?c=Dashboard");
             }
         }
+        # Iniciar Sesión
         public function main(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {                
                 require_once "views/company/header.view.php";            
@@ -45,7 +43,8 @@
                     header("Location:?");
                 }
             }
-        }        
+        }
+        # Olvido de contraseña        
         public function forgotLogin(){
             require_once "views/company/header.view.php";            
             require_once "views/company/forgot.view.php";            

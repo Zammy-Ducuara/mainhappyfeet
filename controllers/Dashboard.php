@@ -18,7 +18,6 @@
             } else {
                 header("Location:?");
             }
-            
         }
     }
 ?>

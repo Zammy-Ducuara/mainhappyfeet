@@ -10,7 +10,7 @@
         public function main(){
             header("Location:?c=Dashboard");
         }
-        public function createRol(){
+        public function createRol(){            
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 require_once "views/roles/admin/header.view.php";
                 require_once "views/modules/01_users/create_rol.view.php";

@@ -82,10 +82,56 @@
                         header("Location:?c=Users&a=readUser");
                     }
                 } else {
-                    header("Location:?");
+                    header("Location:?c=Dashboard");
                 }
             } else {
-                header("Location:?");
+                header("Location:?c=Dashboard");
+            }
+        }
+        public function createSeller(){
+            if (isset($_SESSION['profile']) && isset($_SESSION['session'])) {
+                $profile = unserialize($_SESSION['profile']);
+                $session = $_SESSION['session'];
+                $rol = $profile->getRolCode();
+                if ($rol == 1) {
+                    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                        $userCode = new User();                
+                        require_once "views/roles/admin/header.view.php";
+                        require_once "views/modules/01_users/create_seller.view.php";
+                        require_once "views/roles/admin/footer.view.php";
+                    }
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {                
+                        $userCode = new User;
+                        $userCode = $userCode->createUserCode();
+                        $user = new User(
+                            null,
+                            $userCode,
+                            $_POST["userName"],
+                            $_POST["userLastName"],
+                            $_POST["userEmail"]
+                        );
+                        $credential = new Credential(
+                            $userCode,
+                            $_POST["credentialPhoto"],
+                            $_POST["credentialId"],
+                            $_POST["credentialStartDate"],                    
+                            $_POST["credentialPass"],
+                            $_POST["credentialStatus"]                    
+                        );
+                        $seller = new Employee(
+                            $userCode,
+                            $_POST["employeeSalary"],
+                        );
+                        $user->createUser();                
+                        $credential->createCredential();
+                        $seller->createEmployee();
+                        header("Location:?c=Users&a=readUser");
+                    }
+                } else {
+                    header("Location:?c=Dashboard");
+                }
+            } else {
+                header("Location:?c=Dashboard");
             }
         }
         public function createCustomer(){
@@ -110,7 +156,7 @@
                                 '<a href="?c=Users&a=readCustomer" class="borde">Consultar Clientes</a>'
                             ];
                         }
-                        require_once "views/modules/01_users/create_customer.view.php";                        
+                        require_once "views/modules/01_users/create_customer.view.php";
                         require_once "views/roles/".$session."/footer.view.php";
                     }
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {                
@@ -141,47 +187,12 @@
                         header("Location:?c=Users&a=readUser");
                     }
                 } else {
-                    header("Location:?");
+                    header("Location:?c=Dashboard");
                 }
             } else {
-                header("Location:?");
+                header("Location:?c=Dashboard");
             }
-        }
-        public function createSeller(){
-            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                $userCode = new User();                
-                require_once "views/roles/admin/header.view.php";
-                require_once "views/modules/01_users/create_seller.view.php";
-                require_once "views/roles/admin/footer.view.php";
-            }
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {                
-                $userCode = new User;
-                $userCode = $userCode->createUserCode();
-                $user = new User(
-                    null,
-                    $userCode,
-                    $_POST["userName"],
-                    $_POST["userLastName"],
-                    $_POST["userEmail"]
-                );
-                $credential = new Credential(
-                    $userCode,
-                    $_POST["credentialPhoto"],
-                    $_POST["credentialId"],
-                    $_POST["credentialStartDate"],                    
-                    $_POST["credentialPass"],
-                    $_POST["credentialStatus"]                    
-                );
-                $seller = new Employee(
-                    $userCode,
-                    $_POST["employeeSalary"],
-                );
-                $user->createUser();                
-                $credential->createCredential();
-                $seller->createEmployee();
-                header("Location:?c=Users&a=readUser");
-            }
-        }
+        }        
         public function readUser(){
             if (isset($_SESSION['profile']) && isset($_SESSION['session'])) {
                 $profile = unserialize($_SESSION['profile']);

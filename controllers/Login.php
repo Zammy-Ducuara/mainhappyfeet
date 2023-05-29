@@ -6,8 +6,7 @@
             if (!empty($_SESSION['profile'])) {
                 header("Location:?c=Dashboard");
             }
-        }
-        # Iniciar Sesión
+        }        
         public function main(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {                
                 require_once "views/company/header.view.php";            
@@ -34,17 +33,14 @@
                         $profile = serialize($profile);
                         $_SESSION['profile'] = $profile;
                         header("Location: ?c=Dashboard");
-                    } else {
-                        // echo "usuario inactivo";
+                    } else {                        
                         header("Location:?");
                     }
-                } else {
-                    // echo "usuario sin credenciales";
+                } else {                    
                     header("Location:?");
                 }
             }
         }
-        # Olvido de contraseña        
         public function forgotLogin(){
             require_once "views/company/header.view.php";            
             require_once "views/company/forgot.view.php";            

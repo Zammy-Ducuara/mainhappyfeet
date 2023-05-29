@@ -32,7 +32,7 @@
         <main>
             <aside class="borde">
                 <div class="modulo">
-                    <h1>Perfil Vendedor</h1>
+                    <h1>Vendedor</h1>
                     <a href="">Editar Perfil</a>
                     <a href="">Mis Mensajes</a>
                 </div>

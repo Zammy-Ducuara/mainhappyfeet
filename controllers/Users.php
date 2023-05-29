@@ -36,10 +36,10 @@
                         header("Location: ?c=Users&a=readUser");
                     }
                 } else {
-                    header("Location:?");
+                    header("Location:?c=Dashboard");
                 }
             } else {
-                header("Location:?");
+                header("Location:?c=Dashboard");
             }
         }
         public function createAdmin(){
@@ -183,11 +183,22 @@
             }
         }
         public function readUser(){
-            $users = new User;
-            $users = $users->readUser();
-            require_once "views/roles/admin/header.view.php";            
-            require_once "views/modules/01_users/read_user.view.php";
-            require_once "views/roles/admin/footer.view.php";
+            if (isset($_SESSION['profile']) && isset($_SESSION['session'])) {
+                $profile = unserialize($_SESSION['profile']);
+                $session = $_SESSION['session'];
+                $rol = $profile->getRolCode();
+                if ($rol == 1) {
+                    $users = new User;
+                    $users = $users->readUser();
+                    require_once "views/roles/" . $session . "/header.view.php";                    
+                    require_once "views/modules/01_users/read_user.view.php";
+                    require_once "views/roles/" . $session . "/footer.view.php";                    
+                } else {
+                    header("Location:?c=Dashboard");
+                }
+            } else {
+                header("Location:?c=Dashboard");
+            }
         }
         public function readCustomer(){
             if (isset($_SESSION['profile']) && isset($_SESSION['session'])) {
@@ -206,23 +217,34 @@
             }
         }
         public function updateUser(){
-            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                $user = new User;
-                $user = $user->getUserByCode($_GET['userCode']);
-                require_once "views/roles/admin/header.view.php";                
-                require_once "views/modules/01_users/update_user.view.php";
-                require_once "views/roles/admin/footer.view.php";
-            }
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {                
-                $user = new User(
-                    null,
-                    $_POST['userCode'],
-                    $_POST['userName'],
-                    $_POST['userLastName'],
-                    $_POST['userEmail']
-                );
-                $user->updateUser();
-                header('Location: ?c=Users&a=readUser');
+            if (isset($_SESSION['profile']) && isset($_SESSION['session'])) {
+                $profile = unserialize($_SESSION['profile']);
+                $session = $_SESSION['session'];
+                $rol = $profile->getRolCode();
+                if ($rol == 1) {
+                    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                        $user = new User;
+                        $user = $user->getUserByCode($_GET['userCode']);
+                        require_once "views/roles/admin/header.view.php";                
+                        require_once "views/modules/01_users/update_user.view.php";
+                        require_once "views/roles/admin/footer.view.php";
+                    }
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {                
+                        $user = new User(
+                            null,
+                            $_POST['userCode'],
+                            $_POST['userName'],
+                            $_POST['userLastName'],
+                            $_POST['userEmail']
+                        );
+                        $user->updateUser();
+                        header('Location: ?c=Users&a=readUser');
+                    }
+                } else {
+                    header("Location:?c=Dashboard");
+                }
+            } else {
+                header("Location:?c=Dashboard");
             }
         }
         public function editProfile(){
@@ -231,9 +253,20 @@
             require_once "views/roles/admin/footer.view.php";
         }
         public function deleteUser(){
-            $user = new User;
-            $user->deleteUser($_GET['userCode']);
-            header('Location: ?c=Users&a=readUser');
+            if (isset($_SESSION['profile']) && isset($_SESSION['session'])) {
+                $profile = unserialize($_SESSION['profile']);
+                $session = $_SESSION['session'];
+                $rol = $profile->getRolCode();
+                if ($rol == 1) {
+                    $user = new User;
+                    $user->deleteUser($_GET['userCode']);
+                    header('Location: ?c=Users&a=readUser');
+                } else {
+                    header("Location:?c=Dashboard");
+                }
+            } else {
+                header("Location:?c=Dashboard");
+            }
         }
     }
 ?>

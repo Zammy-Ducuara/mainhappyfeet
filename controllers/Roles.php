@@ -28,10 +28,10 @@
                         header("Location: ?c=Roles&a=readRol");
                     }
                 } else {
-                    header("Location:?");
+                    header("Location:?c=Dashboard");
                 }
             } else {
-                header("Location:?");
+                header("Location:?c=Dashboard");
             }
         }
         public function readRol(){
@@ -39,17 +39,17 @@
                 $profile = unserialize($_SESSION['profile']);
                 $session = $_SESSION['session'];
                 $rol = $profile->getRolCode();
-                if ($rol == 1) {                    
+                if ($rol == 1) {
                     $roles = new User;
                     $roles = $roles->readRol();
                     require_once "views/roles/" . $session . "/header.view.php";
                     require_once "views/modules/01_users/read_rol.view.php";
                     require_once "views/roles/" . $session . "/footer.view.php";
                 } else {
-                    header("Location:?");
+                    header("Location:?c=Dashboard");
                 }
             } else {
-                header("Location:?");
+                header("Location:?c=Dashboard");
             }
         }
         public function updateRol(){
@@ -74,10 +74,10 @@
                         header('Location: ?c=Roles&a=readRol');
                     }
                 } else {
-                    header("Location:?");
+                    header("Location:?c=Dashboard");
                 }
             } else {
-                header("Location:?");
+                header("Location:?c=Dashboard");
             }
         }
         public function deleteRol(){
@@ -90,10 +90,10 @@
                     $rol->deleteRol($_GET['rolCode']);
                     header('Location: ?c=Roles&a=readRol');
                 } else {
-                    header("Location:?");
+                    header("Location:?c=Dashboard");
                 }
             } else {
-                header("Location:?");
+                header("Location:?c=Dashboard");
             }
         }
     }

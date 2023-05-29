@@ -32,7 +32,7 @@
         <main>
             <aside class="borde">
                 <div class="modulo">
-                    <h1>Perfil</h1>
+                    <h1>Administrador</h1>
                     <a href="?c=Users&a=editProfile">Editar Perfil</a>
                     <a href="?c=Messages&a=readMessageProfile">Mis Mensajes</a>
                 </div>

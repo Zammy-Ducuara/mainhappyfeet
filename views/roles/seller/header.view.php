@@ -33,15 +33,15 @@
             <aside class="borde">
                 <div class="modulo">
                     <h1>Perfil Vendedor</h1>
-                    <a href="?c=Users&a=editProfile">Editar Perfil</a>
-                    <a href="?c=Messages&a=readMessageProfile">Mis Mensajes</a>
+                    <a href="">Editar Perfil</a>
+                    <a href="">Mis Mensajes</a>
                 </div>
                 <div class="modulo">
                     <h1>Usuarios</h1>                    
                     <a href="?c=Users&a=createCustomer">Crear Cliente</a>
                     <a href="?c=Users&a=readCustomer">Consultar Clientes</a>
-                    <a href="?c=Messages&a=createMessage">Crear Mensaje</a>
-                    <a href="?c=Messages&a=readMessage">Consultar Mensajes</a>
+                    <a href="">Crear Mensaje</a>
+                    <a href="">Consultar Mensajes</a>
                 </div>
                 <div class="modulo">
                     <h1>Módulo Principal</h1>
@@ -50,8 +50,8 @@
                 </div>
                 <div class="modulo">
                     <h1>Reportes</h1>
-                    <a href="?c=Reports&a=printedUserReport">Impreso Usuarios</a>
-                    <a href="?c=Reports&a=graphicUserReport">Gráfico Usuairos</a>
+                    <a href="">Impreso Usuarios</a>
+                    <a href="">Gráfico Usuairos</a>
                 </div>
             </aside>
             <section class="borde">

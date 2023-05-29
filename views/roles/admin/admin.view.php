@@ -1,4 +1,5 @@
 <h1>Principal</h1>
-<?php    
-    print_r($profile);
+<?php
+    echo "<br><h3> Bienvenido(a) a nuestro(a) Administrador(a): ";
+    echo $profile->getUserName() . " " . $profile->getUserLastName() . "</h3>";
 ?>

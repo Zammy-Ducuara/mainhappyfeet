@@ -104,7 +104,7 @@
                                 '<a href="?c=Users&a=createAdmin" class="borde">Crear Admin</a>',
                                 '<a href="?c=Users&a=readUser" class="borde">Consultar Usuarios</a>'
                             ];
-                        } else {
+                        } elseif ($rol == 4) {
                             $buttonsCreateUser = [
                                 '<a href="?c=Users&a=createCustomer" class="borde">Crear Cliente</a>',
                                 '<a href="?c=Users&a=readCustomer" class="borde">Consultar Clientes</a>'

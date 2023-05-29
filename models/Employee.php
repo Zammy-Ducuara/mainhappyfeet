@@ -15,32 +15,17 @@
             } catch (Exception $e) {
                 die($e->getMessage());
             }
-        }
-        public function __construct11($rolName,$userCode,$userName,$userLastName,$userEmail,$credentialPhoto,$credentialId,$credentialStartDate,$credentialPass,$credentialStatus,$employeeSalary){
-            $this->rolName = $rolName;            
-            $this->userCode = $userCode;
-            $this->userName = $userName;
-            $this->userLastName = $userLastName;
-            $this->userEmail = $userEmail;            
-            $this->credentialPhoto = $credentialPhoto;
-            $this->credentialId = $credentialId;
-            $this->credentialStartDate = $credentialStartDate;
-            $this->credentialPass = $credentialPass;
-            $this->credentialStatus = $credentialStatus;
-            $this->employeeSalary = $employeeSalary;
-        }
+        }        
         public function __construct2($employeeCode,$employeeSalary){            
             $this->employeeCode = $employeeCode;
             $this->employeeSalary = $employeeSalary;
-        }
-        # Código de Empleado
+        }        
         public function setEmployeeCode($employeeCode){
             $this->employeeCode = $employeeCode;
         }
         public function getEmployeeCode(){
             return $this->employeeCode;
-        }
-        # Salario Empleado (Vendedor o Administrador)
+        }        
         public function setEmployeeSalary($employeeSalary){
             $this->employeeSalary = $employeeSalary;
         }

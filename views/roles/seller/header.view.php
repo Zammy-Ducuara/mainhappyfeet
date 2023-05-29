@@ -39,7 +39,7 @@
                 <div class="modulo">
                     <h1>Usuarios</h1>                    
                     <a href="?c=Users&a=createCustomer">Crear Cliente</a>
-                    <a href="?c=Users&a=readCustomer">Consultar Clientes</a>
+                    <a href="?c=Users&a=readUser">Consultar Usuarios</a>
                     <a href="">Crear Mensaje</a>
                     <a href="">Consultar Mensajes</a>
                 </div>

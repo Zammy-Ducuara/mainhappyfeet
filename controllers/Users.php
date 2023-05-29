@@ -143,19 +143,6 @@
                     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                         $userCode = new User();
                         require_once "views/roles/".$session."/header.view.php";
-                        if ($rol == 1) {
-                            $buttonsCreateUser = [
-                                '<a href="?c=Users&a=createUser" class="borde">Crear Usuario</a>',
-                                '<a href="?c=Users&a=createSeller" class="borde">Crear Vendedor</a>', 
-                                '<a href="?c=Users&a=createAdmin" class="borde">Crear Admin</a>',
-                                '<a href="?c=Users&a=readUser" class="borde">Consultar Usuarios</a>'
-                            ];
-                        } elseif ($rol == 4) {
-                            $buttonsCreateUser = [
-                                '<a href="?c=Users&a=createCustomer" class="borde">Crear Cliente</a>',
-                                '<a href="?c=Users&a=readCustomer" class="borde">Consultar Clientes</a>'
-                            ];
-                        }
                         require_once "views/modules/01_users/create_customer.view.php";
                         require_once "views/roles/".$session."/footer.view.php";
                     }
@@ -198,7 +185,7 @@
                 $profile = unserialize($_SESSION['profile']);
                 $session = $_SESSION['session'];
                 $rol = $profile->getRolCode();
-                if ($rol == 1) {
+                if ($rol == 1 || $rol == 4) {
                     $users = new User;
                     $users = $users->readUser();
                     require_once "views/roles/" . $session . "/header.view.php";                    
@@ -217,6 +204,8 @@
                 $session = $_SESSION['session'];
                 $rol = $profile->getRolCode();
                 if ($rol == 1 || $rol == 4) {
+                    $customers = new Customer;
+                    $customers = $customers->readCustomer();
                     require_once "views/roles/".$session."/header.view.php";
                     echo "<h1>En construcción</h1>";
                     require_once "views/roles/".$session."/footer.view.php";

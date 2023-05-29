@@ -32,16 +32,14 @@
         <main>
             <aside class="borde">
                 <div class="modulo">
-                    <h1>Perfil</h1>
+                    <h1>Perfil Vendedor</h1>
                     <a href="?c=Users&a=editProfile">Editar Perfil</a>
                     <a href="?c=Messages&a=readMessageProfile">Mis Mensajes</a>
                 </div>
                 <div class="modulo">
-                    <h1>Usuarios</h1>
-                    <a href="?c=Roles&a=createRol">Crear Rol</a>
-                    <a href="?c=Roles&a=readRol">Consultar Roles</a>
-                    <a href="?c=Users&a=createUser">Crear Usuario</a>
-                    <a href="?c=Users&a=readUser">Consultar Usuarios</a>
+                    <h1>Usuarios</h1>                    
+                    <a href="?c=Users&a=createCustomer">Crear Cliente</a>
+                    <a href="?c=Users&a=readCustomer">Consultar Clientes</a>
                     <a href="?c=Messages&a=createMessage">Crear Mensaje</a>
                     <a href="?c=Messages&a=readMessage">Consultar Mensajes</a>
                 </div>

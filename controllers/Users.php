@@ -1,4 +1,4 @@
-<?php    
+<?php session_start();
     require_once "models/Employee.php";
     require_once "models/Customer.php";
     class Users{
@@ -12,93 +12,139 @@
             header("Location:?c=Dashboard");
         }
         public function createUser(){
-            if ($_SERVER['REQUEST_METHOD'] == 'GET') {                
-                require_once "views/roles/admin/header.view.php";
-                require_once "views/modules/01_users/create_user.view.php";
-                require_once "views/roles/admin/footer.view.php";
-            }
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $userCode = new User;
-                $userCode = $userCode->createUserCode();
-                $user = new User(
-                    null,
-                    $userCode,
-                    $_POST['userName'],
-                    $_POST['userLastName'],
-                    $_POST['userEmail']
-                );
-                $user->createUser();
-                header("Location: ?c=Users&a=readUser");
+            if (isset($_SESSION['profile']) && isset($_SESSION['session'])) {
+                $profile = unserialize($_SESSION['profile']);
+                $session = $_SESSION['session'];
+                $rol = $profile->getRolCode();
+                if ($rol == 1) {
+                    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                        require_once "views/roles/".$session."/header.view.php";
+                        require_once "views/modules/01_users/create_user.view.php";
+                        require_once "views/roles/".$session."/footer.view.php";
+                    }
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                        $userCode = new User;
+                        $userCode = $userCode->createUserCode();
+                        $user = new User(
+                            null,
+                            $userCode,
+                            $_POST['userName'],
+                            $_POST['userLastName'],
+                            $_POST['userEmail']
+                        );
+                        $user->createUser();
+                        header("Location: ?c=Users&a=readUser");
+                    }
+                } else {
+                    header("Location:?");
+                }
+            } else {
+                header("Location:?");
             }
         }
         public function createAdmin(){
-            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                $userCode = new User();                
-                require_once "views/roles/admin/header.view.php";
-                require_once "views/modules/01_users/create_admin.view.php";
-                require_once "views/roles/admin/footer.view.php";
-            }
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {                
-                $userCode = new User;
-                $userCode = $userCode->createUserCode();
-                $user = new User(
-                    null,
-                    $userCode,
-                    $_POST["userName"],
-                    $_POST["userLastName"],
-                    $_POST["userEmail"]
-                );
-                $credential = new Credential(
-                    $userCode,
-                    $_POST["credentialPhoto"],
-                    $_POST["credentialId"],
-                    $_POST["credentialStartDate"],                    
-                    $_POST["credentialPass"],
-                    $_POST["credentialStatus"]                    
-                );
-                $admin = new Employee(
-                    $userCode,
-                    $_POST["employeeSalary"],
-                );
-                $user->createUser();                
-                $credential->createCredential();
-                $admin->createEmployee();
-                header("Location:?c=Users&a=readUser");
+            if (isset($_SESSION['profile']) && isset($_SESSION['session'])) {
+                $profile = unserialize($_SESSION['profile']);
+                $session = $_SESSION['session'];
+                $rol = $profile->getRolCode();
+                if ($rol == 1) {
+                    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                        $userCode = new User();
+                        require_once "views/roles/".$session."/header.view.php";
+                        require_once "views/modules/01_users/create_admin.view.php";
+                        require_once "views/roles/".$session."/footer.view.php";
+                    }
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {                
+                        $userCode = new User;
+                        $userCode = $userCode->createUserCode();
+                        $user = new User(
+                            null,
+                            $userCode,
+                            $_POST["userName"],
+                            $_POST["userLastName"],
+                            $_POST["userEmail"]
+                        );
+                        $credential = new Credential(
+                            $userCode,
+                            $_POST["credentialPhoto"],
+                            $_POST["credentialId"],
+                            $_POST["credentialStartDate"],                    
+                            $_POST["credentialPass"],
+                            $_POST["credentialStatus"]                    
+                        );
+                        $admin = new Employee(
+                            $userCode,
+                            $_POST["employeeSalary"],
+                        );
+                        $user->createUser();                
+                        $credential->createCredential();
+                        $admin->createEmployee();
+                        header("Location:?c=Users&a=readUser");
+                    }
+                } else {
+                    header("Location:?");
+                }
+            } else {
+                header("Location:?");
             }
         }
         public function createCustomer(){
-            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                $userCode = new User();                
-                require_once "views/roles/admin/header.view.php";
-                require_once "views/modules/01_users/create_customer.view.php";
-                require_once "views/roles/admin/footer.view.php";
-            }
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {                
-                $userCode = new User;
-                $userCode = $userCode->createUserCode();
-                $user = new User(
-                    null,
-                    $userCode,
-                    $_POST["userName"],
-                    $_POST["userLastName"],
-                    $_POST["userEmail"]
-                );
-                $credential = new Credential(
-                    $userCode,
-                    $_POST["credentialPhoto"],
-                    $_POST["credentialId"],
-                    $_POST["credentialStartDate"],                    
-                    $_POST["credentialPass"],
-                    $_POST["credentialStatus"]                    
-                );
-                $customer = new Customer(
-                    $userCode,
-                    $_POST["customerBirthDate"],
-                );
-                $user->createUser();                
-                $credential->createCredential();
-                $customer->createCustomer();
-                header("Location:?c=Users&a=readUser");
+            if (isset($_SESSION['profile']) && isset($_SESSION['session'])) {
+                $profile = unserialize($_SESSION['profile']);
+                $session = $_SESSION['session'];
+                $rol = $profile->getRolCode();
+                if ($rol == 1 || $rol == 4) {
+                    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                        $userCode = new User();
+                        require_once "views/roles/".$session."/header.view.php";
+                        if ($rol == 1) {
+                            $buttonsCreateUser = [
+                                '<a href="?c=Users&a=createUser" class="borde">Crear Usuario</a>',
+                                '<a href="?c=Users&a=createSeller" class="borde">Crear Vendedor</a>', 
+                                '<a href="?c=Users&a=createAdmin" class="borde">Crear Admin</a>',
+                                '<a href="?c=Users&a=readUser" class="borde">Consultar Usuarios</a>'
+                            ];
+                        } else {
+                            $buttonsCreateUser = [
+                                '<a href="?c=Users&a=createCustomer" class="borde">Crear Cliente</a>',
+                                '<a href="?c=Users&a=readCustomer" class="borde">Consultar Clientes</a>'
+                            ];
+                        }
+                        require_once "views/modules/01_users/create_customer.view.php";                        
+                        require_once "views/roles/".$session."/footer.view.php";
+                    }
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {                
+                        $userCode = new User;
+                        $userCode = $userCode->createUserCode();
+                        $user = new User(
+                            null,
+                            $userCode,
+                            $_POST["userName"],
+                            $_POST["userLastName"],
+                            $_POST["userEmail"]
+                        );
+                        $credential = new Credential(
+                            $userCode,
+                            $_POST["credentialPhoto"],
+                            $_POST["credentialId"],
+                            $_POST["credentialStartDate"],                    
+                            $_POST["credentialPass"],
+                            $_POST["credentialStatus"]                    
+                        );
+                        $customer = new Customer(
+                            $userCode,
+                            $_POST["customerBirthDate"],
+                        );
+                        $user->createUser();                
+                        $credential->createCredential();
+                        $customer->createCustomer();
+                        header("Location:?c=Users&a=readUser");
+                    }
+                } else {
+                    header("Location:?");
+                }
+            } else {
+                header("Location:?");
             }
         }
         public function createSeller(){
@@ -142,6 +188,22 @@
             require_once "views/roles/admin/header.view.php";            
             require_once "views/modules/01_users/read_user.view.php";
             require_once "views/roles/admin/footer.view.php";
+        }
+        public function readCustomer(){
+            if (isset($_SESSION['profile']) && isset($_SESSION['session'])) {
+                $profile = unserialize($_SESSION['profile']);
+                $session = $_SESSION['session'];
+                $rol = $profile->getRolCode();
+                if ($rol == 1 || $rol == 4) {
+                    require_once "views/roles/".$session."/header.view.php";
+                    echo "<h1>En construcción</h1>";
+                    require_once "views/roles/".$session."/footer.view.php";
+                } else {
+                    header("Location:?");
+                }
+            } else {
+                header("Location:?");
+            }
         }
         public function updateUser(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
